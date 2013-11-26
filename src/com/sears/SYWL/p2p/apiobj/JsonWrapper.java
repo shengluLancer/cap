@@ -13,4 +13,14 @@ public class JsonWrapper {
 		return json;
 	}
 	
+
+	public static Object unwrap( String json, Class className ) {
+		
+		Gson gson = new Gson();
+		Object n = gson.fromJson(json, className );
+		
+		return n;
+		
+	}
+	
 }
