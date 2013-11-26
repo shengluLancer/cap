@@ -105,6 +105,7 @@ public class TestDriver {
 		SummaryEntryDao summaryEntryDao = new SummaryEntryDaoImpl();
 		summaryEntryList.get(0).setOrders(new HashSet<Order>());
 		summaryEntryList.get(0).getOrders().add(order1);
+		summaryEntryList.get(0).getOrders().add(orderList.get(2));
 		summaryEntryList.get(0).setDeliverLocation(location1);
 		summaryEntryList.get(1).setOrders(new HashSet<Order>());
 		summaryEntryList.get(1).getOrders().add(order2);
@@ -148,9 +149,12 @@ public class TestDriver {
 		for(SummaryEntry se : summary.getEntryList())
 			System.out.println(se.getDeliverMethod());
 	
-		//System.out.println(user10.getbMonth() + " " + user10.getbYear());
+		/*
+		summary.getEntryList().remove(summaryEntry0);
+		summaryDao.save(summary);	
 		
-		
+		Summary deletedSummary = summaryDao.loadSummaryById(1);
+		System.out.println(deletedSummary.getEntryList());
+		*/
 	}
-	
 }

@@ -16,13 +16,13 @@ public class GenerateOrder {
 		TestDriver.orderList.add(order0);
 		
 		Order order1 = new Order();
-		order1.setOrderName("chicken");
+		order1.setOrderName("banana");
 		order1.setCount(14);
 		order1.setTax(1.0);
 		TestDriver.orderList.add(order1);
 		
 		Order order2 = new Order();
-		order2.setOrderName("chicken");
+		order2.setOrderName("buble tea");
 		order2.setCount(2);
 		order2.setTax(1.0);
 		TestDriver.orderList.add(order2);

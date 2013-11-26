@@ -8,8 +8,8 @@ public class GenerateIntent {
 	public void generate() {
 		// TODO Auto-generated method stub
 		DeliverIntent intent0 = new DeliverIntent();
-		intent0.setLatitude(40.454076);
-		intent0.setLongitude(-79.943287);
+		intent0.setLatitude(40.445818);
+		intent0.setLongitude(-79.948859);
 		intent0.setDate(System.currentTimeMillis());
 		intent0.setReward(100);
 		intent0.setStore_id(10);
