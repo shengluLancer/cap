@@ -1,5 +1,6 @@
 package com.sears.SYWL.p2p.controller;
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -46,6 +47,11 @@ public class Controller extends HttpServlet {
 		Action.add(new RegisterDeliverIntentAction());
 		Action.add(new SummaryAction());
 		Action.add(new DescribeAction());
+		Action.add(new AddItemAction());
+		Action.add(new ChooseMethodAction());
+		Action.add(new DeliveryConfirmAction());
+		Action.add(new GetDeliverLocInitAction());
+		Action.add(new LocationAction());
 	}
 	
 	
