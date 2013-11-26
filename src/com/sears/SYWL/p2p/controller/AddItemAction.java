@@ -31,7 +31,7 @@ public class AddItemAction extends Action {
 		HttpSession session = request.getSession();
 		
 		// hard code Summary Entry
-		String entryData = "{'storeId':8,'orders':[{'orderName':'chicken','count':14,'preTaxPrice':0.0,'tax':1.0,'totalPrice':0.0}]}";
+		String entryData = "{'storeId':10,'orders':[{'orderName':'chicken','count':14,'preTaxPrice':0.0,'tax':1.0,'totalPrice':0.0}]}";
 		
 		//hard code user id
 		int user_id = 1;
