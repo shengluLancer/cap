@@ -1,5 +1,6 @@
 package com.sears.SYWL.p2p.controller;
 import java.io.PrintWriter;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
@@ -26,16 +27,17 @@ public class AddItemAction extends Action {
 	public String perform(HttpServletRequest request, PrintWriter writer) {	
 		
 		// hard code Summary Entry
-		String entryData = "{'storeId':8,'deliverMethod':'pickup','orders':[{'orderName':'chicken','count':14,'preTaxPrice':0.0,'tax':1.0,'totalPrice':0.0}],'deliverTime':0,'deliverFee':13.0,'subtotalPrice':0.0}";
+		String entryData = "{'storeId':8,'orders':[{'orderName':'chicken','count':14,'preTaxPrice':0.0,'tax':1.0,'totalPrice':0.0}]}";
 		
 		SummaryEntry newEntry = (SummaryEntry)JsonWrapper.unwrap(entryData, SummaryEntry.class);
+		
 		
 		HttpSession session = request.getSession();
 		
 		Summary ss;
 		
 		// if first summary entry
-		if( session.getAttribute( "my_summary" ) != null ) {
+		if( session.getAttribute( "my_summary" ) == null ) {
 			ss = new Summary();
 			session.setAttribute("my_summary", ss);
 		}
@@ -44,8 +46,12 @@ public class AddItemAction extends Action {
 		}
 		
 		Set<SummaryEntry> temp = ss.getEntryList();
-		temp.add(newEntry);
+		if( temp==null ) {
+			temp = new HashSet<SummaryEntry>();
+		}
 		
+		temp.add(newEntry);
+		ss.setEntryList(temp);
 		
 		return ("chooseMethod.jsp");
 	}
