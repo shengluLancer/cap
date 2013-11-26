@@ -18,7 +18,7 @@ public class GetBuyerLocationHistoryAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request, PrintWriter writer) {
-		
+		System.out.println(request.getParameter("user_id"));
 		int user_id=Integer.parseInt(request.getParameter("user_id"));
 		
 		IJSONable returnMessage=Controller.api.getLocationHistoryByUserId_buyer(user_id);

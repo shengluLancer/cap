@@ -27,19 +27,22 @@ public class AddItemAction extends Action {
 	@Override
 	public String perform(HttpServletRequest request, PrintWriter writer) {	
 		
+		
+		HttpSession session = request.getSession();
+		
 		// hard code Summary Entry
 		String entryData = "{'storeId':8,'orders':[{'orderName':'chicken','count':14,'preTaxPrice':0.0,'tax':1.0,'totalPrice':0.0}]}";
 		
 		//hard code user id
 		int user_id = 1;
+		session.setAttribute("user_id", user_id);
+		
+		
 		
 		User user = Controller.api.getUserDao().loadUserById(user_id);
 		
 		SummaryEntry newEntry = (SummaryEntry)JsonWrapper.unwrap(entryData, SummaryEntry.class);
-		
-		
-		HttpSession session = request.getSession();
-		
+
 		Summary ss;
 		
 		// if first summary entry

@@ -27,8 +27,51 @@
     </style>
   
     <script src="http://maps.google.com/maps?file=api&v=2&AIzaSyA0pN_fGQIvH58XsO8LERRTPOrvSIxHMVk&sensor=false"  
-        type="text/javascript"></script>   
+        type="text/javascript"></script>  
+         
     <script type="text/javascript">  
+	var innerHtml = "";
+    
+    //get location history info
+    $.ajax({
+    	url : "getbuyerlochis.do",
+    	data : {
+    		user_id : <%=request.getAttribute("user_id")%>
+    	},
+    	success : function(result) {
+    		
+    		var obj = $.parseJSON( result );
+    		var locations = obj.LocationHistory.locations;
+
+        	var i = 1;
+          	while(i < locations.length+1 && i < 4 ) {
+        		innerHtml += 
+        		"<form action=\"#\" onsubmit=\"showAddr(this.hisLoc" + i + ".value); return false\">" +
+        		"<ul class=\"pageitem\">" +
+                "<li class=\"button\"><input name=\"hisLoc" + i + "\" id=\"hisLoc" + i + "\" type=\"submit\" value=\""+ locations[i-1].address +"\"/></li>" +
+                "</ul></form>";
+        		i++;
+        	} 
+
+        	var locHistDiv = document.getElementById("locHistDiv");
+        	locHistDiv.innerHTML = innerHtml;
+    		
+    	} 
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //google maps
+    
     var i=1;  
     var map;  
     var currentOverlay = null;  
@@ -39,18 +82,7 @@
     function load() {  
     	var text = document.getElementById("locationHistory").getAttribute("value");
     	/* var json = JSON.parse(text); */
-    	var innerHtml = "";
-    	var i = 1;
-      	while(i < 2) {
-    		innerHtml += 
-    		"<form action=\"#\" onsubmit=\"showAddr(this.hisLoc" + i + ".value); return false\">" +
-    		"<ul class=\"pageitem\">" +
-            "<li class=\"button\"><input name=\"hisLoc" + i + "\" id=\"hisLoc" + i + "\" type=\"submit\" value=\"2046 N Orleans St, Chicago, IL\"/></li>" +
-            "</ul></form>";
-    		i++;
-    	} 
-    	var locHistDiv = document.getElementById("locHistDiv");
-    	locHistDiv.innerHTML = innerHtml;
+
 /*     	document.getElementById("hisLoc1").setAttribute("value",json.location);
     	document.getElementById("hisLoc2").setAttribute("value",json.LocationHistory.locations[1].address); */
     	
