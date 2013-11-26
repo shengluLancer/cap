@@ -33,7 +33,7 @@
 
 <body>
 <%
-String status = "delivered";
+String status = "pickup";
 
 String message;
 if(status.equals("delivered"))
