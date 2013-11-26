@@ -149,6 +149,7 @@ public class TestDriver {
 		for(SummaryEntry se : summary.getEntryList())
 			System.out.println(se.getDeliverMethod());
 	
+		summaryEntryDao.getNumOfGoods(2);
 		/*
 		summary.getEntryList().remove(summaryEntry0);
 		summaryDao.save(summary);	
