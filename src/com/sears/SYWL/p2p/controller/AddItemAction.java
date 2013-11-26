@@ -53,6 +53,8 @@ public class AddItemAction extends Action {
 		temp.add(newEntry);
 		ss.setEntryList(temp);
 		
+		Controller.api.getSummaryDao().save(ss);
+		
 		return ("chooseMethod.jsp");
 	}
 	

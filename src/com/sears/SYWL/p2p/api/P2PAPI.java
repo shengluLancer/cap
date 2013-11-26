@@ -3,6 +3,7 @@ package com.sears.SYWL.p2p.api;
 import com.sears.SYWL.p2p.apiobj.IJSONable;
 import com.sears.SYWL.p2p.dal.DeliverIntent;
 import com.sears.SYWL.p2p.dal.Summary;
+import com.sears.SYWL.p2p.dao.SummaryDao;
 
 
 public interface P2PAPI {
@@ -92,5 +93,7 @@ public interface P2PAPI {
 	public IJSONable addNewHistoryLocation(String address,double latitude, double longitude,int user_id, boolean deliver);
 	
 	public IJSONable confirmSummary(Summary summary);
+	
+	public SummaryDao getSummaryDao();
 	
 }

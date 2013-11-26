@@ -28,10 +28,10 @@ import com.sears.SYWL.p2p.dao.UserDaoImpl;
 
 public class P2PAPIImpl implements P2PAPI {
 	
-	DeliverIntentDao deliverIntentDao;
-	UserDao userDao;
-	OrderDao orderDao;
-	SummaryDao summaryDao;
+	public DeliverIntentDao deliverIntentDao;
+	public UserDao userDao;
+	public OrderDao orderDao;
+	public SummaryDao summaryDao;
 	
 	private static Comparator<Location> locationComparator= new Comparator<Location>() {
 
@@ -210,6 +210,10 @@ public class P2PAPIImpl implements P2PAPI {
 		
 		return new SimpleMessage("true");
 		
+	}
+	
+	public SummaryDao getSummaryDao() {
+		return this.summaryDao;
 	}
 	
 	
