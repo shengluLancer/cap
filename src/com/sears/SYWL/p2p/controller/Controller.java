@@ -126,6 +126,11 @@ public class Controller extends HttpServlet {
 			response.sendRedirect(nextPage);
 			return;
 		}
+		
+		if (nextPage.endsWith(".jsp")) {
+			RequestDispatcher dispatch=request.getRequestDispatcher(nextPage);
+			dispatch.forward(request,response);
+		}
 
 	}
 
