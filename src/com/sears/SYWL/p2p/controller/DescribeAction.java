@@ -26,7 +26,7 @@ public class DescribeAction extends Action {
 		if(address==null || description==null || amount==null ||
 				address.isEmpty() || description.isEmpty() || amount.isEmpty()){
 			request.setAttribute("error", "true");
-			return("editDetails.jsp");
+			return("summary.jsp");
 		}
             return("success.jsp");	
 	}

@@ -29,17 +29,29 @@
 
 </style>
 </head>
-
+<script>
+function change() {
+	location.href = "editDetails.jsp";
+}
+</script>
 
 <body>
 <%
-String status = "pickup";
+String status1 = "delivered";
 
-String message;
-if(status.equals("delivered"))
-	message = "Get delivered now (in 30 min)";
+String message1;
+if(status1.equals("delivered"))
+	message1 = "Get delivered now (in 30 min)";
 else
-	message = "Pick up now";
+	message1 = "Pick up now";
+
+String status2 = "pickup";
+
+String message2;
+if(status2.equals("delivered"))
+	message2 = "Get delivered now (in 30 min)";
+else
+	message2 = "Pick up now";
 %>
 
 <div id="topbar">
@@ -49,28 +61,26 @@ else
 <div id="content">
     <form action="summary.do" method="post">
     
-    	<%for (int i =0; i < 2; i++){%>
     	
     	<div class="div-d">
     	<ul class="pageitem">
 		<li class="textbox"><span class="header"> <font size="5"> Little Asia </font></span>	
-		<p><%=message%></p><br></li>
+		<p><%=message1%></p><br></li>
 		<li> <div class="div-a" style="margin-left:10%;font-size:15pt"> Sushi Box</div> <div class="div-b" style="font-size:15pt">1</div>  <div class="div-b" style="font-size:15pt"> $10 </div> </li>
 		<li > <div class="div-a" style="margin-left:10%;font-size:15pt">Subtotal </div><div class="div-c" style="margin-right:2%;font-size:15pt"> $10 </div> </li> 
 	    </ul>
 	    </div>
-	    
 	    <div class="div-e">
-	    <%if (status.equals("pickup")){%>
+	    <%if (status1.equals("pickup")){%>
 	    <span class="graytitle">Deliver for others?</span>
 	    <ul class="pageitem">
 			<li class="radiobutton"><span class="name">Yes</span>
-			<input name="delivertype" type="radio" value="forOthers" checked="yes"/></li>
+			<input name="delivertype" type="radio" value="forOthers"  /></li>
 			<li class="radiobutton"><span class="name">No</span>
-			<input name="delivertype" type="radio" value="forSelf" /></li>
+			<input name="delivertype" type="radio" value="forSelf" checked="yes"/></li>
 		</ul>
 		<%}%>
-		<%if (status.equals("delivered")){%>
+		<%if (status1.equals("delivered")){%>
 		<ul class="pageitem">
 			<li class="button">
 			<input name="viewDetails" type="submit" value="View Details"/></li>
@@ -78,7 +88,32 @@ else
 		<%}%>
 		</div>
 		
+		<div class="div-d">
+    	<ul class="pageitem">
+		<li class="textbox"><span class="header"> <font size="5"> Rose Tea Cafe </font></span>	
+		<p><%=message2%></p><br></li>
+		<li> <div class="div-a" style="margin-left:10%;font-size:15pt"> Lunch Box</div> <div class="div-b" style="font-size:15pt">1</div>  <div class="div-b" style="font-size:15pt"> $15 </div> </li>
+		<li > <div class="div-a" style="margin-left:10%;font-size:15pt">Subtotal </div><div class="div-c" style="margin-right:2%;font-size:15pt"> $15 </div> </li> 
+	    </ul>
+	    </div>
+	    <div class="div-e">
+	    <%if (status2.equals("pickup")){%>
+	    <span class="graytitle">Deliver for others?</span>
+	    <ul class="pageitem">
+			<li class="radiobutton"><span class="name">Yes</span>
+			<input name="delivertype" type="radio" value="forOthers" onChange="change()" /></li>
+			<li class="radiobutton"><span class="name">No</span>
+			<input name="delivertype" type="radio" value="forSelf" checked="yes"/></li>
+		</ul>
 		<%}%>
+		<%if (status2.equals("delivered")){%>
+		<ul class="pageitem">
+			<li class="button">
+			<input name="viewDetails" type="submit" value="View Details"/></li>
+		</ul>
+		<%}%>
+		</div>
+		
 		
 		<div class="div-f">
 		<ul class="pageitem">
@@ -87,7 +122,7 @@ else
 		</ul>
 		</div>
 		<ul class="pageitem">
-			<input type="hidden" name="status" value=<%=status%>>
+			<input type="hidden" name="status" value=<%=status1%>>
 		</ul>
 	</form>
 </div>
