@@ -23,7 +23,7 @@ public class ChooseMethodAction extends Action {
 	public String perform(HttpServletRequest request, PrintWriter writer) {	
 		
 		HttpSession session=request.getSession();
-		int entry_id = (int)session.getAttribute("my_entry_id");
+		int entry_id = (Integer)session.getAttribute("my_entry_id");
 		SummaryEntry e = Controller.api.getSummaryEntryDao().loadSummaryEntryById(entry_id);
 	
 		if(request.getParameter("getDelivered") != null) {
