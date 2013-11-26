@@ -13,12 +13,10 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 	
 	public User loadUserById(int userId){
 		 User t = new User();
-		 User result = new User();
 		 Session hibernateSession = this.getSession();
 		 System.out.println(hibernateSession);
 	     HibernateUtil.beginTransaction();	 
 	     t = (User)hibernateSession.load(t.getClass(), userId);
-	     result.setbDay(t.getbDay());
 	     HibernateUtil.commitTransaction();
 	     return t;
 	}

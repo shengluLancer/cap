@@ -27,4 +27,12 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
       // HibernateUtil.closeSession();
     }
 	
+	@Override
+	public void merge(T entity) {
+        Session hibernateSession = this.getSession();
+        HibernateUtil.beginTransaction();
+        hibernateSession.merge(entity);
+        HibernateUtil.commitTransaction();
+      // HibernateUtil.closeSession();
+    }
 }

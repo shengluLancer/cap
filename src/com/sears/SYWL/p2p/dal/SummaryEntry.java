@@ -13,8 +13,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
-import org.hibernate.annotations.Cascade;
-
 
 
 @Entity
@@ -25,11 +23,6 @@ public class SummaryEntry {
 	@GeneratedValue
 	@Column(name="ENTRY_ID")
 	private int entryId;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinTable(name="TB_ENTRY_USER", joinColumns = @JoinColumn(name="ENTRY_ID"),
-			inverseJoinColumns = @JoinColumn(name="USER_ID"))
-	private User user;
 	
 	@Column(name="STORE_ID")
 	private int storeId;
@@ -69,12 +62,7 @@ public class SummaryEntry {
 	public void setEntryId(int entryId) {
 		this.entryId = entryId;
 	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+
 	public int getStoreId() {
 		return storeId;
 	}

@@ -20,6 +20,7 @@ public class TestDriver {
 	public static List<DeliverIntent> intentList = new ArrayList<DeliverIntent>();
 	
 	
+	
 	public static void main(String[] args){
 		
 		//generateExisting();
@@ -102,12 +103,10 @@ public class TestDriver {
 		
 		
 		SummaryEntryDao summaryEntryDao = new SummaryEntryDaoImpl();
-		summaryEntryList.get(0).setUser(user1);
-		summaryEntryList.get(0).setOrders(new HashSet());
+		summaryEntryList.get(0).setOrders(new HashSet<Order>());
 		summaryEntryList.get(0).getOrders().add(order1);
 		summaryEntryList.get(0).setDeliverLocation(location1);
-		summaryEntryList.get(1).setUser(user2);
-		summaryEntryList.get(1).setOrders(new HashSet());
+		summaryEntryList.get(1).setOrders(new HashSet<Order>());
 		summaryEntryList.get(1).getOrders().add(order2);
 		summaryEntryList.get(1).setDeliverLocation(location2);
 		//summaryEntryList.get(1).getOrders().add();
@@ -120,19 +119,20 @@ public class TestDriver {
 		
 		SummaryDao summaryDao = new SummaryDaoImpl();
 		Summary summary0 = summaryList.get(0);
-		summary0.setEntryList(new HashSet());
+		summary0.setEntryList(new HashSet<SummaryEntry>());
 		summary0.getEntryList().add(summaryEntry0);
 		summary0.getEntryList().add(summaryEntry1);
+		summary0.setUser(user1);
 		summaryDao.save(summary0);
 		
 		Summary summary1 = summaryList.get(1);	
-		summary1.setEntryList(new HashSet());
-		summaryEntryList.get(2).setUser(user2);
+		summary1.setEntryList(new HashSet<SummaryEntry>());
 		summary1.getEntryList().add(summaryEntryList.get(2));
+		summary1.setUser(user2);
 		summaryDao.save(summary1);
 		
 		DeliverIntent intent1 = intentDao.loadIntentById(1);
-		//System.out.println(intent1.getCapacity());
+		System.out.println(intent1.getCapacity());
 		
 		List<DeliverIntent> set = intentDao.queryActiveIntentPool(9,System.currentTimeMillis() + 100000000);
 		System.out.println(set.size());
@@ -148,5 +148,9 @@ public class TestDriver {
 		for(SummaryEntry se : summary.getEntryList())
 			System.out.println(se.getDeliverMethod());
 	
+		//System.out.println(user10.getbMonth() + " " + user10.getbYear());
+		
+		
 	}
+	
 }
