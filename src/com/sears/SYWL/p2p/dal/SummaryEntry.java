@@ -19,6 +19,9 @@ import javax.persistence.JoinColumn;
 @Table(name = "SUMMARY_ENTRY")
 public class SummaryEntry {
 
+	public static final String PICK_UP = "pickup";
+	public static final String GET_DELIVERY = "getdelivery";
+	
 	@Id
 	@GeneratedValue
 	@Column(name="ENTRY_ID")
