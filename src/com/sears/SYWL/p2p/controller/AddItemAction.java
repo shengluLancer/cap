@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.sears.SYWL.p2p.apiobj.JsonWrapper;
 import com.sears.SYWL.p2p.dal.Summary;
 import com.sears.SYWL.p2p.dal.SummaryEntry;
+import com.sears.SYWL.p2p.dal.User;
 
 
 public class AddItemAction extends Action {
@@ -28,6 +29,11 @@ public class AddItemAction extends Action {
 		
 		// hard code Summary Entry
 		String entryData = "{'storeId':8,'orders':[{'orderName':'chicken','count':14,'preTaxPrice':0.0,'tax':1.0,'totalPrice':0.0}]}";
+		
+		//hard code user id
+		int user_id = 1;
+		
+		User user = Controller.api.getUserDao().loadUserById(user_id);
 		
 		SummaryEntry newEntry = (SummaryEntry)JsonWrapper.unwrap(entryData, SummaryEntry.class);
 		
@@ -52,6 +58,7 @@ public class AddItemAction extends Action {
 		
 		temp.add(newEntry);
 		ss.setEntryList(temp);
+		ss.setUser(user);
 		
 		Controller.api.getSummaryDao().save(ss);
 		
