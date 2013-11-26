@@ -3,7 +3,9 @@ package com.sears.SYWL.p2p.api;
 import com.sears.SYWL.p2p.apiobj.IJSONable;
 import com.sears.SYWL.p2p.dal.DeliverIntent;
 import com.sears.SYWL.p2p.dal.Summary;
+import com.sears.SYWL.p2p.dal.SummaryEntry;
 import com.sears.SYWL.p2p.dao.SummaryDao;
+import com.sears.SYWL.p2p.dao.SummaryEntryDao;
 
 
 public interface P2PAPI {
@@ -95,5 +97,7 @@ public interface P2PAPI {
 	public IJSONable confirmSummary(Summary summary);
 	
 	public SummaryDao getSummaryDao();
+	
+	public SummaryEntryDao getSummaryEntryDao();
 	
 }
