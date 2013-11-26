@@ -19,6 +19,9 @@ public class DeliveryConfirmAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request, PrintWriter writer) {	
+		
+		
+		
 		HttpSession session = request.getSession(true);
 		int userId = new Integer((session).getAttribute("userId").toString());
 		String longitude = request.getParameter("finalLongitude");
@@ -27,11 +30,15 @@ public class DeliveryConfirmAction extends Action {
 //		double longitude = new Double(request.getParameter("finalLongitude"));
 		String address = request.getParameter("finalAddress");
 		double range = new Double(request.getParameter("range"));
+		
+		System.out.println("Entering   DeliveryConfirmAction.java");
 		System.out.println(userId);
 		System.out.println(latitude);
 		System.out.println(longitude);
 		System.out.println(address);
 		System.out.println(range);
+		
+		
 		if(Math.random() > 0.5) return ("getDeliverSuccess.jsp");
 		else return ("getDeliverFail.jsp");
 	}

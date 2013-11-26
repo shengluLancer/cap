@@ -30,11 +30,28 @@
         type="text/javascript"></script>  
          
     <script type="text/javascript">  
+    
+$(document).ready(function() {
+	
+	var this_mode = document.getElementById("mode").value;
+	// mode 0 : get delivery
+	// mode 1 : pick up self
+	
 	var innerHtml = "";
     
+	var target_url;
+	document.getElementById("out_mode").setAttribute("value", this_mode);	
+	if(this_mode == 0) {
+		target_url= "getbuyerlochis.do";
+	}
+	else{
+
+		target_url= "getdellochis.do";
+	}
+	
     //get location history info
     $.ajax({
-    	url : "getbuyerlochis.do",
+    	url : target_url,
     	data : {
     		user_id : <%=request.getAttribute("user_id")%>
     	},
@@ -60,14 +77,8 @@
     });
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+
+}) ;
     
     
     //google maps
@@ -80,7 +91,8 @@
     var gdir;  
     var addressMarker;  
     function load() {  
-    	var text = document.getElementById("locationHistory").getAttribute("value");
+    	
+    	
     	/* var json = JSON.parse(text); */
 
 /*     	document.getElementById("hisLoc1").setAttribute("value",json.location);
@@ -172,6 +184,7 @@
         );  
       }  
     }  
+
    </script>  
   
 </head>  
@@ -179,8 +192,7 @@
 <body onload="load()" onunload="GUnload()">  
 
 <div id="topbar">
-	<div id="leftnav">
-		<a href="summary.jsp">Back</a></div>
+	<div id="leftnav"></div>
 
 	<div id="title">
 		 Choose Location</div>
@@ -188,7 +200,8 @@
 <div id="content">
    
     <fieldset>
-        <input type="hidden" name="locatioHistory" id="locationHistory" value="<%=request.getAttribute("locationHistory")%>"/>
+        
+        <input type="hidden" name="mode" id="mode" value="<%=request.getAttribute("mode")%>"/>
         <form action="#" onsubmit="showAddr(this.currentAddress.value); return false"> 
     	<span class="graytitle">Current Location</span> 
         <ul class="pageitem">
@@ -220,7 +233,7 @@
                 <input type="hidden" id="confirmAddr" name="confirmAddr" value=""></input>
                 <input type="hidden" id="confirmLongitude" name="confirmLongitude" value=""></input>
                 <input type="hidden" id="confirmLatitude" name="confirmLatitude" value=""></input>
-                <input type="hidden" id="userId" name="userId" value="1"></input>
+                <input type="hidden" id="out_mode" name="out_mode"></input>
                 <li class="button"><input name="confirm" type="submit" value="Confirm Location"/></li>
             </form>
         </ul>

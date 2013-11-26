@@ -25,6 +25,10 @@ public class GetDeliverLocInitAction extends Action {
 		//get history with user id 
 		request.setAttribute("user_id", user_id);
 		
+		//tell maps.jsp that the reason of calling it     (pick up or get delivery)
+		// mode 0 : get delivery
+		// mode 1 : pick up by self
+		request.setAttribute("mode", 0);
         return ("map.jsp");
 	}
 
