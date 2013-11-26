@@ -19,6 +19,8 @@ import com.sears.SYWL.p2p.dal.Summary;
 import com.sears.SYWL.p2p.dal.User;
 import com.sears.SYWL.p2p.dao.DeliverIntentDao;
 import com.sears.SYWL.p2p.dao.DeliverIntentDaoImpl;
+import com.sears.SYWL.p2p.dao.LocationDao;
+import com.sears.SYWL.p2p.dao.LocationDaoImpl;
 import com.sears.SYWL.p2p.dao.OrderDao;
 import com.sears.SYWL.p2p.dao.OrderDaoImpl;
 import com.sears.SYWL.p2p.dao.SummaryDao;
@@ -35,6 +37,7 @@ public class P2PAPIImpl implements P2PAPI {
 	public OrderDao orderDao;
 	public SummaryDao summaryDao;
 	public SummaryEntryDao summaryEntryDao;
+	public LocationDao locationDao;
 	
 	private static Comparator<Location> locationComparator= new Comparator<Location>() {
 
@@ -50,6 +53,7 @@ public class P2PAPIImpl implements P2PAPI {
 		orderDao=new OrderDaoImpl();
 		summaryDao=new SummaryDaoImpl();
 		summaryEntryDao= new SummaryEntryDaoImpl();
+		locationDao=new LocationDaoImpl();
 	}
 
 	@Override
@@ -222,6 +226,26 @@ public class P2PAPIImpl implements P2PAPI {
 	
 	public SummaryEntryDao getSummaryEntryDao() {
 		return this.summaryEntryDao;
+	}
+
+	@Override
+	public DeliverIntentDao getDeliverIntentDao() {
+		return this.deliverIntentDao;
+	}
+
+	@Override
+	public UserDao getUserDao() {
+		return this.userDao;
+	}
+
+	@Override
+	public LocationDao getLocationDao() {
+		return this.locationDao;
+	}
+
+	@Override
+	public OrderDao getOrderDao() {
+		return this.orderDao;
 	}
 
 }
