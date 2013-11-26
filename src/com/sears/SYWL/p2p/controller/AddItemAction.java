@@ -55,6 +55,10 @@ public class AddItemAction extends Action {
 		
 		Controller.api.getSummaryDao().save(ss);
 		
+		System.out.println("qunidagedexiezi "+newEntry.getEntryId());
+		
+		session.setAttribute("my_entry_id", newEntry.getEntryId());
+		
 		return ("chooseMethod.jsp");
 	}
 	

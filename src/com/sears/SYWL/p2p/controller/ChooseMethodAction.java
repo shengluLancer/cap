@@ -22,8 +22,9 @@ public class ChooseMethodAction extends Action {
 	public String perform(HttpServletRequest request, PrintWriter writer) {	
 		
 		HttpSession session=request.getSession();
-		Summary summary=(Summary)session.getAttribute("my_summary");
-		System.out.println(summary.getSummaryId());
+		
+		int entry_id = (int)session.getAttribute("my_entry_id");
+		
 		
 		if(request.getParameter("getDelivered") != null) {
 	        return ("getDeliverLoc.jsp");
