@@ -36,7 +36,7 @@ public class ChooseMethodAction extends Action {
 			e.setDeliverMethod(SummaryEntry.PICK_UP);
 
 			Controller.api.getSummaryEntryDao().save(e);
-			return ("summary.jsp");
+			return ("pickupContinueShopping.jsp");
 		}
 		
 	}
