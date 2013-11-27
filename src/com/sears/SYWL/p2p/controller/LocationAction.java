@@ -24,33 +24,32 @@ public class LocationAction extends Action {
 	public String perform(HttpServletRequest request, PrintWriter writer) {	
 		
 		String mode = request.getParameter("out_mode");
+		HttpSession session = request.getSession();
+		int userId = new Integer((session).getAttribute("user_id").toString());
 		
-		if( mode.equals("0") ) {
-			
-			// get delivery
-			HttpSession session = request.getSession(true);
-			int userId = new Integer((session).getAttribute("user_id").toString());
-			String confirmAddr = request.getParameter("confirmAddr");
-			double confirmLongitude = new Double(request.getParameter("confirmLongitude"));
-			double confirmLatitude = new Double(request.getParameter("confirmLatitude"));
-			
-			
-//			System.out.println(confirmAddr);
-//			System.out.println(confirmLatitude);
-//			System.out.println(confirmLongitude);
-	//		request.setAttribute("userId", userId);
-	        request.setAttribute("address", confirmAddr);
-	        request.setAttribute("latitude", confirmLatitude);
-	        request.setAttribute("longitude", confirmLongitude);
-	        
-	        
+
+		String confirmAddr = request.getParameter("confirmAddr");
+		double confirmLongitude = new Double(request.getParameter("confirmLongitude"));
+		double confirmLatitude = new Double(request.getParameter("confirmLatitude"));
+		
+		
+//		System.out.println(confirmAddr);
+//		System.out.println(confirmLatitude);
+//		System.out.println(confirmLongitude);
+//		request.setAttribute("userId", userId);
+        request.setAttribute("address", confirmAddr);
+        request.setAttribute("latitude", confirmLatitude);
+        request.setAttribute("longitude", confirmLongitude);
+        
+		
+		
+		if( mode.equals("0") ) {			
+			// get delivery	
 	        return ("getDeliverLocAf.jsp");
 		}
 		else{
-   
 	        // pick up self
-	        // connect to xiaoyu's page
-			
+	        // connect to xiaoyu's page			
 			return  "editDetails.jsp";
 		}
         

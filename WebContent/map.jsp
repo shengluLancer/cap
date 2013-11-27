@@ -45,9 +45,10 @@ $(document).ready(function() {
 		target_url= "getbuyerlochis.do";
 	}
 	else{
-
 		target_url= "getdellochis.do";
 	}
+	
+	/* console.log(target_url); */
 	
     //get location history info
     $.ajax({
