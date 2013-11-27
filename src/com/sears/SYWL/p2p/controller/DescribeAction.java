@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sears.SYWL.p2p.dal.Location;
 import com.sears.SYWL.p2p.dal.SummaryEntry;
 
 public class DescribeAction extends Action {
@@ -39,6 +40,13 @@ public class DescribeAction extends Action {
 		
 		Controller.api.registerDeliveryIntent(user_id, capacity, System.currentTimeMillis(),
 				lat_dest, lng_dest, address,entry.getStoreId() , 10);
+		
+		Location location = new Location();
+		location.setAddress(address);
+		location.setLatitude(lat_dest);
+		location.setLongitude(lng_dest);
+		entry.setDeliverLocation(location);
+		Controller.api.getSummaryEntryDao().save(entry);
 		
         return("summary.jsp");	
 	}
