@@ -59,11 +59,11 @@
 		<form action="getDeliverLocInitAction.do" method="get">
     	<span class="graytitle">Address & Building</span>
 		<ul class="pageitem">
-			<li class="bigfield"><input type="text" name="address" readonly value="5000 Forbes Ave, Pittsburgh" /></li>
+			<li class="bigfield"><input type="text" name="address" readonly value="<%=request.getAttribute("address")==null? "5030 Centre Ave Pittsburgh" : request.getAttribute("address")%>" /></li>
 		</ul>
 		<input type="hidden" id="mode" name="mode" value="1"></input>
-		<input type="hidden" id="latitude" name="latitude" value="40.4443411"></input>
-		<input type="hidden" id="longitude" name="longitude" value="-79.94392949999997"></input>
+		<input type="hidden" id="latitude" name="latitude" value="<%=request.getAttribute("latitude")==null? "40.4443411" : request.getAttribute("latitude")%>"></input>
+		<input type="hidden" id="longitude" name="longitude" value="<%=request.getAttribute("longitude")==null? "-79.94392949999997" : request.getAttribute("longitude")%>"></input>
 		<ul class="pageitem">   
 		    <li class="button"><input name="Edit" type="submit" value="Edit"/></li>
 		</ul>

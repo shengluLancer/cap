@@ -45,12 +45,12 @@ public class LocationAction extends Action {
 		
 		if( mode.equals("0") ) {			
 			// get delivery	
-	        return ("getDeliverLocAf.jsp");
+	        return ("getDeliverLoc.jsp");
 		}
 		else{
 	        // pick up self
 	        // connect to xiaoyu's page			
-			return  "editDetailsFinished.jsp";
+			return  "editDetails.jsp";
 		}
         
         
