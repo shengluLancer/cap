@@ -152,6 +152,7 @@ public class P2PAPIImpl implements P2PAPI {
 		dIntent.setUser(user);
 		dIntent.setCapacity(capacity);
 		dIntent.setDate(date);
+		dIntent.setDue_time(date+40*60*1000);
 		dIntent.setLatitude(lat_dest);
 		dIntent.setLongitude(lng_dest);
 		dIntent.setReward(reward);
