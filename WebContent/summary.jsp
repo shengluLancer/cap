@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>   
 <%@page import="javax.servlet.http.*"%>
+<%@page import="java.util.*"%>
 <%@page import="com.sears.SYWL.p2p.dal.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,7 +23,6 @@
 .div-a{ float:left;width:40%} 
 .div-b{ float:left;width:25%}
 .div-c{ float:left;width:47%}
-
 .div-d{ float:left;width:70%}
 .div-e{ float:left;width:30%}
 
@@ -39,24 +39,8 @@ function change() {
 <body>
 <%
 // the summary for this page
-Summary ss = (Summary)session.getAttribute("my_summary");
-
-
-String status1 = "delivered";
-
-String message1;
-if(status1.equals("delivered"))
-	message1 = "Get delivered now (in 30 min)";
-else
-	message1 = "Pick up now";
-
-String status2 = "pickup";
-
-String message2;
-if(status2.equals("delivered"))
-	message2 = "Get delivered now (in 30 min)";
-else
-	message2 = "Pick up now";
+	Summary ss = (Summary)session.getAttribute("my_summary");
+	Iterator<SummaryEntry> entryIterator = ss.getEntryList().iterator();
 %>
 
 <div id="topbar">
@@ -66,59 +50,54 @@ else
 <div id="content">
     <form action="summary.do" method="post">
     
-    	
+    <% while(entryIterator.hasNext()) {
+    	SummaryEntry summaryEntry = entryIterator.next();
+    	String method = summaryEntry.getDeliverMethod();
+    	String message = null;
+    	if(method.equals("delivered"))
+    		message = "Get delivered now (in 30 min)";
+    	else
+    		message = "pick up now";
+    	Iterator<Order> orderIterator = summaryEntry.getOrders().iterator();
+    %>
     	<div class="div-d">
     	<ul class="pageitem">
-		<li class="textbox"><span class="header"> <font size="5"> Little Asia </font></span>	
-		<p><%=message1%></p><br></li>
-		<li> <div class="div-a" style="margin-left:10%;font-size:15pt"> Sushi Box</div> <div class="div-b" style="font-size:15pt">1</div>  <div class="div-b" style="font-size:15pt"> $10 </div> </li>
-		<li > <div class="div-a" style="margin-left:10%;font-size:15pt">Subtotal </div><div class="div-c" style="margin-right:2%;font-size:15pt"> $10 </div> </li> 
-	    </ul>
+		<li class="textbox"><span class="header"> <font size="5"><%="I am store #" + summaryEntry.getStoreId() %></font></span>
+    		<p><%=message%></p><br>
+    	</li>
+    	<% while(orderIterator.hasNext()){ 
+    		   Order order = orderIterator.next();
+    		   double price = order.getPreTaxPrice() + order.getTax();
+    	%>
+    	<li> <div class="div-a" style="margin-left:10%;font-size:15pt"><%=order.getOrderName()%></div> 
+    		 <div class="div-b" style="font-size:15pt"><%=order.getCount()%></div>  
+    		 <div class="div-b" style="font-size:15pt"><%="$"+ price + " (tax: " + order.getTax() + ")" %></div> 
+    	</li>
+		<li> <div class="div-a" style="margin-left:10%;font-size:15pt">Subtotal</div>
+			 <div class="div-c" style="margin-right:2%;font-size:15pt"><%=order.getTotalPrice()%></div> 
+		</li> 
+    	<% }%>
+    	 </ul>
 	    </div>
+	    
 	    <div class="div-e">
-	    <%if (status1.equals("pickup")){%>
+	    <%if (method.equals("pickup")){%>
 	    <span class="graytitle">Deliver for others?</span>
 	    <ul class="pageitem">
 			<li class="radiobutton"><span class="name">Yes</span>
-			<input name="delivertype" type="radio" value="forOthers"  /></li>
+			<input name="delivertype" type="radio" value="forOthers" onChange="change()"/></li>
 			<li class="radiobutton"><span class="name">No</span>
 			<input name="delivertype" type="radio" value="forSelf" checked="yes"/></li>
 		</ul>
 		<%}%>
-		<%if (status1.equals("delivered")){%>
+		<%if (method.equals("delivered")){%>
 		<ul class="pageitem">
 			<li class="button">
 			<input name="viewDetails" type="submit" value="View Details"/></li>
 		</ul>
 		<%}%>
 		</div>
-		
-		<div class="div-d">
-    	<ul class="pageitem">
-		<li class="textbox"><span class="header"> <font size="5"> Rose Tea Cafe </font></span>	
-		<p><%=message2%></p><br></li>
-		<li> <div class="div-a" style="margin-left:10%;font-size:15pt"> Lunch Box</div> <div class="div-b" style="font-size:15pt">1</div>  <div class="div-b" style="font-size:15pt"> $15 </div> </li>
-		<li > <div class="div-a" style="margin-left:10%;font-size:15pt">Subtotal </div><div class="div-c" style="margin-right:2%;font-size:15pt"> $15 </div> </li> 
-	    </ul>
-	    </div>
-	    <div class="div-e">
-	    <%if (status2.equals("pickup")){%>
-	    <span class="graytitle">Deliver for others?</span>
-	    <ul class="pageitem">
-			<li class="radiobutton"><span class="name">Yes</span>
-			<input name="delivertype" type="radio" value="forOthers" onChange="change()" /></li>
-			<li class="radiobutton"><span class="name">No</span>
-			<input name="delivertype" type="radio" value="forSelf" checked="yes"/></li>
-		</ul>
-		<%}%>
-		<%if (status2.equals("delivered")){%>
-		<ul class="pageitem">
-			<li class="button">
-			<input name="viewDetails" type="submit" value="View Details"/></li>
-		</ul>
-		<%}%>
-		</div>
-		
+    <% }%>
 		
 		<div class="div-f">
 		<ul class="pageitem">
@@ -127,7 +106,7 @@ else
 		</ul>
 		</div>
 		<ul class="pageitem">
-			<input type="hidden" name="status" value=<%=status1%>>
+			<input type="hidden" name="status" value=<%="haha"%>>
 		</ul>
 	</form>
 </div>
