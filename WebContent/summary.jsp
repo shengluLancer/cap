@@ -31,8 +31,12 @@
 </style>
 </head>
 <script>
-function change() {
-	location.href = "editDetails.jsp";
+function change(id) {
+	location.href = "editDetails.jsp?entry="+id;
+}
+
+function viewDetails() {
+	location.href="viewDetails.jsp";
 }
 </script>
 
@@ -51,7 +55,9 @@ function change() {
 <div id="content">
     <form action="summary.do" method="post">
     
-    <% while(entryIterator.hasNext()) {
+    <% 
+    	int counter=0;
+    	while(entryIterator.hasNext()) {
     	SummaryEntry summaryEntry = entryIterator.next();
     	String method = summaryEntry.getDeliverMethod();
     	//if pick up, then the summary Entry here don't have Location in it!
@@ -87,21 +93,21 @@ function change() {
 	    <span class="graytitle">Deliver for others?</span>
 	    <ul class="pageitem">
 			<li class="radiobutton"><span class="name">Yes</span>
-			<input name="delivertype" type="radio" value="forOthers" onChange="change()" checked=<%= summaryEntry.getDeliverLocation()!=null? "yes":"no"  %>/></li>
+			<input name="delivertype<%=counter%>" type="radio" value="forOthers" onChange="change(<%=summaryEntry.getEntryId() %>)" checked=<%= summaryEntry.getDeliverLocation()!=null? "yes":"no"  %>/></li>
 			<li class="radiobutton"><span class="name">No</span>
-			<input name="delivertype" type="radio" value="forSelf" checked=<%= summaryEntry.getDeliverLocation()!=null? "no":"yes"  %>/></li>
+			<input name="delivertype<%=counter++%>" type="radio" value="forSelf" checked=<%= summaryEntry.getDeliverLocation()!=null? "no":"yes"  %>/></li>
 		</ul>
 		<%}%>
-		<%if (method.equals("delivered")){%>
+		<%System.out.println(method+"  caonimabi"); if (method.equals("delivered")){%>
 		<ul class="pageitem">
 			<li class="button">
-			<input name="viewDetails" type="submit" value="View Details"/></li>
+			<input type="button" onclick="viewDetails()" value="View Details" /></li>
 		</ul>
 		<%}%>
 		</div>
-		<ul class="pageitem">
-			<input type="hidden" name="status" value=<%=method%>>
-		</ul>
+		
+		<input type="hidden" name="status" value=<%=method%>>
+		
     <% }%>
 		
 		<div class="div-f">
