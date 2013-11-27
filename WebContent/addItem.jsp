@@ -38,13 +38,65 @@
 <div id="content">
     <form action="addItemAction.do" method="get">
     	<fieldset>
-    	<span class="graytitle">Little Asia</span>
-		<ul class="pageitem">
-			<li class="bigfield"><input type="text" id="item" name="item" readonly value="Chicken Over Rice"/></li>
-		</ul>
+    	
+    	<%  
+    	int num = 1;
+    	session = request.getSession();
+    	
+    	if(session.getAttribute("entry_data_number")==null) {
+
+        	session.setAttribute("entry_data_number", 1);	
+    	}
+    	else {
+    		num = (Integer)session.getAttribute("entry_data_number");
+    		num++;
+    		if(num == 4) {
+    			num =1;
+    		}
+    		session.setAttribute("entry_data_number", num);
+    		
+    	}
+    	
+    	
+    	%>
+    	
+				    	<% if(num==1) {
+				    	%>
+				    	
+				    	<span class="graytitle">Little Asia</span>
+						<ul class="pageitem">
+							<li class="bigfield"><input type="text" id="item" name="item" readonly value="Chicken Over Rice * 1"/></li>
+						</ul>
+						
+						<% } %>
+						
+						
+						<% if(num==2) {
+				    	%>
+				    	
+				    	<span class="graytitle">Rose Tea Cafe</span>
+						<ul class="pageitem">
+							<li class="bigfield"><input type="text" id="item" name="item" readonly value="Bubble Tea * 2"/></li>
+						</ul>
+						
+						<% } %>
+						
+						
+						<% if(num==3){
+				    	%>
+				    	
+				    	<span class="graytitle">Bagel Factory</span>
+						<ul class="pageitem">
+							<li class="bigfield"><input type="text" id="item" name="item" readonly value="Italian Bagels * 4"/></li>
+						</ul>
+						
+						<% } %>
+		
+		
 		<ul class="pageitem">
 			<li class="button"><input name="buy" id="buy" type="submit" value="BUY"/></li>
 		</ul>
+		
 		</form>
 		</fieldset>
 	</form>

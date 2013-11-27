@@ -31,7 +31,19 @@ public class AddItemAction extends Action {
 		HttpSession session = request.getSession();
 		
 		// hard code Summary Entry
-		String entryData = "{'storeId':10,'orders':[{'orderName':'chicken','count':14,'preTaxPrice':0.0,'tax':1.0,'totalPrice':0.0}]}";
+		int entry_data_number = (Integer)session.getAttribute("entry_data_number");
+		String entryData;
+		if( entry_data_number == 1 ) {
+			 entryData = "{'storeId':9,'orders':[{'orderName':'chicken over rice','count':1,'preTaxPrice':7.6,'tax':1.0,'totalPrice':8.6}]}";
+		}
+		else if(entry_data_number == 2) {
+			 entryData = "{'storeId':10,'orders':[{'orderName':'bubble tea','count':2,'preTaxPrice':3.4,'tax':0.5,'totalPrice':3.9}]}";
+		}
+		else {
+			// 3
+			 entryData = "{'storeId':9,'orders':[{'orderName':'Italian Bagels','count':4,'preTaxPrice':12.4,'tax':2.0,'totalPrice':14.4}]}";
+		}
+			
 		
 		//hard code user id
 		int user_id = 1;
