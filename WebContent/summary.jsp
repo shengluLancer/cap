@@ -97,6 +97,9 @@ function change() {
 		</ul>
 		<%}%>
 		</div>
+		<ul class="pageitem">
+			<input type="hidden" name="status" value=<%=method%>>
+		</ul>
     <% }%>
 		
 		<div class="div-f">
@@ -105,14 +108,12 @@ function change() {
 			<input name="summarySubmit" type="submit" value="Submit"/></li>
 		</ul>
 		</div>
-		<ul class="pageitem">
-			<input type="hidden" name="status" value=<%="haha"%>>
-		</ul>
+		
 	</form>
 </div>
 <div id="footer">
-	<a class="noeffect">App powered by Coding Tartans</a></div>
-
+	<a class="noeffect">App powered by Coding Tartans</a>
+	</div>
 </body>
 
 </html>
