@@ -28,7 +28,8 @@ public class GetDeliverLocInitAction extends Action {
 		//tell maps.jsp that the reason of calling it     (pick up or get delivery)
 		// mode 0 : get delivery
 		// mode 1 : pick up by self
-		request.setAttribute("mode", 0);
+		int mode = new Integer(request.getParameter("mode"));
+		request.setAttribute("mode", mode);
         return ("map.jsp");
 	}
 

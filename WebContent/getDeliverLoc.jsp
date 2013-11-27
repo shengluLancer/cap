@@ -56,7 +56,7 @@
     	<fieldset>
     	<span class="graytitle">Your Location</span>
 		<ul class="pageitem">
-			<li class="bigfield"><input placeholder="Current Address" type="text" id="address" name="address" readonly value="5030 Centre Ave Pittsburgh"/></li>
+			<li class="bigfield"><input type="text" id="address" name="address" readonly value="5030 Centre Ave Pittsburgh"/></li>
 		</ul>
 		<input type="hidden" id="latitude" name="latitude" value="40.4443411"></input>
 		<input type="hidden" id="longitude" name="longitude" value="-79.94392949999997"></input>
@@ -65,6 +65,7 @@
 		</ul>
 	</form>
 	<form action="deliveryConfirmAction.do" onsubmit="updateAddr()" method="get">
+	    <input type="hidden" id="mode" name="mode" value="1"></input>
 	    <input type="hidden" id="finalLatitude" name="finalLatitude" value=""></input>
 		<input type="hidden" id="finalLongitude" name="finalLongitude" value=""></input>
 		<input type="hidden" id="finalAddress" name="finalAddress" value=""></input>

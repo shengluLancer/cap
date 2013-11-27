@@ -50,7 +50,7 @@ public class LocationAction extends Action {
 		else{
 	        // pick up self
 	        // connect to xiaoyu's page			
-			return  "editDetails.jsp";
+			return  "editDetailsFinished.jsp";
 		}
         
         
