@@ -58,7 +58,7 @@
 		<ul class="pageitem">
 			<li class="bigfield"><input placeholder="Current Address" type="text" id="address" name="address" readonly value="<%=request.getAttribute("address")%>"/></li>
 		</ul>
-		<input type="hidden" id="mode" name="mode" value="1"></input>
+		<input type="hidden" id="mode" name="mode" value="0"></input>
 		<input type="hidden" id="latitude" name="latitude" value="<%=request.getAttribute("latitude")%>"></input>
 		<input type="hidden" id="longitude" name="longitude" value="<%=request.getAttribute("longitude")%>"></input>
 		<ul class="pageitem">   

@@ -65,7 +65,7 @@
 		</ul>
 	</form>
 	<form action="deliveryConfirmAction.do" onsubmit="updateAddr()" method="get">
-	    <input type="hidden" id="mode" name="mode" value="1"></input>
+	    <input type="hidden" id="mode" name="mode" value="0"></input>
 	    <input type="hidden" id="finalLatitude" name="finalLatitude" value=""></input>
 		<input type="hidden" id="finalLongitude" name="finalLongitude" value=""></input>
 		<input type="hidden" id="finalAddress" name="finalAddress" value=""></input>
