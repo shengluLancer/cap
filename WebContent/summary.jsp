@@ -87,9 +87,9 @@ function change() {
 	    <span class="graytitle">Deliver for others?</span>
 	    <ul class="pageitem">
 			<li class="radiobutton"><span class="name">Yes</span>
-			<input name="delivertype" type="radio" value="forOthers" onChange="change()" checked=<%= summaryEntry.getDeliverLocation()!=null? "yes":"no"  %>/></li>
+			<input name="delivertype" type="radio" value="forOthers" onChange="change()" checked=<%= summaryEntry.getDeliverLocation()!=null? "yes":"no"%>/></li>
 			<li class="radiobutton"><span class="name">No</span>
-			<input name="delivertype" type="radio" value="forSelf" checked=<%= summaryEntry.getDeliverLocation()!=null? "no":"yes"  %>/></li>
+			<input name="delivertype" type="radio" value="forSelf" checked=<%= summaryEntry.getDeliverLocation()!=null? "no":"yes"%>/></li>
 		</ul>
 		<%}%>
 		<%if (method.equals("delivered")){%>

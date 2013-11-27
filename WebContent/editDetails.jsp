@@ -54,6 +54,9 @@
 		if(request.getAttribute("error")!=null){
 			out.print("<div><span class='redtitle'>Fields can not be empty!</span><br/><br/></div>");
 		}
+    	
+    	request.getParameter("entry_id");
+    	
 		%>
 		
 		<form action="getDeliverLocInitAction.do" method="get">
