@@ -41,7 +41,14 @@
 </div>
 <div id="content">
     	<fieldset>
-    	<span class="graytitle">Found P2P Delivery For You!</span>
+    	<form action="chooseAfSuccessDeliverAction.do" method="get">
+    	<span class="graytitle">Successful!</span>
+    	<ul class="pageitem">
+			<li class="button"><input name="checkout" id="checkout" type="submit" value="Check out"/></li>
+		</ul>
+		<ul class="pageitem">
+			<li class="button"><input name="contshopping" id="contshopping" type="submit" value="Continue Shopping"/></li>
+		</ul>
 		</form>
 		</fieldset>
 </div>
