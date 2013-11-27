@@ -18,7 +18,7 @@ public class TestDriver {
 	public static List<Summary> summaryList = new ArrayList<Summary>();
 	public static List<SummaryEntry> summaryEntryList = new ArrayList<SummaryEntry>();
 	public static List<DeliverIntent> intentList = new ArrayList<DeliverIntent>();
-	
+	public static List<Store> storeList = new ArrayList<Store>();
 	
 	
 	public static void main(String[] args){
@@ -30,12 +30,14 @@ public class TestDriver {
 	}
 	
 	private static void generateNone(){
+		GenerateStore GST = new GenerateStore();
 		GenerateUser GU = new GenerateUser();
 		GenerateLocation GL = new GenerateLocation();
 		GenerateOrder GO = new GenerateOrder();
 		GenerateSummaryEntry GS = new GenerateSummaryEntry();
 		GenerateIntent GI = new GenerateIntent();
 		GenerateSummary GSY = new GenerateSummary();
+		GST.generate();
 		GU.generate();
 		GO.generate();
 		GL.generate();
@@ -43,6 +45,10 @@ public class TestDriver {
 		GI.generate();
 		GSY.generate();
 		
+		StoreDao storeDao = new StoreDaoImpl();
+		for(Store store : storeList){
+			storeDao.save(store);
+		}
 		
 		OrderDao orderDao = new OrderDaoImpl();
 		for(Order order : orderList)
@@ -129,7 +135,7 @@ public class TestDriver {
 		Summary summary1 = summaryList.get(1);	
 		summary1.setEntryList(new HashSet<SummaryEntry>());
 		summary1.getEntryList().add(summaryEntryList.get(2));
-		summary1.setUser(user2);
+		summary1.setUser(user1);
 		summaryDao.save(summary1);
 		
 		DeliverIntent intent1 = intentDao.loadIntentById(1);
