@@ -41,6 +41,7 @@ function change() {
 // the summary for this page
 	Summary ss = (Summary)session.getAttribute("my_summary");
 	Iterator<SummaryEntry> entryIterator = ss.getEntryList().iterator();
+	
 %>
 
 <div id="topbar">
@@ -53,6 +54,7 @@ function change() {
     <% while(entryIterator.hasNext()) {
     	SummaryEntry summaryEntry = entryIterator.next();
     	String method = summaryEntry.getDeliverMethod();
+    	//if pick up, then the summary Entry here don't have Location in it!
     	String message = null;
     	if(method.equals("delivered"))
     		message = "Get delivered now (in 30 min)";
@@ -85,9 +87,9 @@ function change() {
 	    <span class="graytitle">Deliver for others?</span>
 	    <ul class="pageitem">
 			<li class="radiobutton"><span class="name">Yes</span>
-			<input name="delivertype" type="radio" value="forOthers" onChange="change()"/></li>
+			<input name="delivertype" type="radio" value="forOthers" onChange="change()" checked=<%= summaryEntry.getDeliverLocation()!=null? "yes":"no"  %>/></li>
 			<li class="radiobutton"><span class="name">No</span>
-			<input name="delivertype" type="radio" value="forSelf" checked="yes"/></li>
+			<input name="delivertype" type="radio" value="forSelf" checked=<%= summaryEntry.getDeliverLocation()!=null? "no":"yes"  %>/></li>
 		</ul>
 		<%}%>
 		<%if (method.equals("delivered")){%>
