@@ -62,6 +62,7 @@
 			<li class="bigfield"><input type="text" name="address" readonly value="<%=request.getAttribute("address")==null? "5030 Centre Ave Pittsburgh" : request.getAttribute("address")%>" /></li>
 		</ul>
 		<input type="hidden" id="mode" name="mode" value="1"></input>
+		<input type="hidden" id="entry_id" name="entry_id" value="<%= request.getParameter("entry_id") %>"></input>
 		<input type="hidden" id="latitude" name="latitude" value="<%=request.getAttribute("latitude")==null? "40.4443411" : request.getAttribute("latitude")%>"></input>
 		<input type="hidden" id="longitude" name="longitude" value="<%=request.getAttribute("longitude")==null? "-79.94392949999997" : request.getAttribute("longitude")%>"></input>
 		<ul class="pageitem">   
@@ -70,6 +71,7 @@
 		</form>
 		
 		<form action="describe.do" onsubmit="updateAddr()" method="post">
+		<input type="hidden" id="entry_id" name="entry_id" value="<%= request.getParameter("entry_id") %>"></input>
 		<input type="hidden" id="finalLatitude" name="finalLatitude" value=""></input>
 		<input type="hidden" id="finalLongitude" name="finalLongitude" value=""></input>
 		<input type="hidden" id="finalAddress" name="finalAddress" value=""></input>

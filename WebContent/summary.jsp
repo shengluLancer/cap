@@ -32,7 +32,7 @@
 </head>
 <script>
 function change(id) {
-	location.href = "editDetails.jsp?entry="+id;
+	location.href = "editDetails.jsp?entry_id="+id;
 }
 
 function viewDetails() {
