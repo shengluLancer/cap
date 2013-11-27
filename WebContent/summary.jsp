@@ -34,6 +34,10 @@
 function change() {
 	location.href = "editDetails.jsp";
 }
+
+function viewDetails() {
+	location.href="viewDetails.jsp";
+}
 </script>
 
 <body>
@@ -92,16 +96,16 @@ function change() {
 			<input name="delivertype" type="radio" value="forSelf" checked=<%= summaryEntry.getDeliverLocation()!=null? "no":"yes"  %>/></li>
 		</ul>
 		<%}%>
-		<%if (method.equals("delivered")){%>
+		<%System.out.println(method+"  caonimabi"); if (method.equals("delivered")){%>
 		<ul class="pageitem">
 			<li class="button">
-			<input name="viewDetails" type="submit" value="View Details"/></li>
+			<input type="button" onclick="viewDetails()" value="View Details" /></li>
 		</ul>
 		<%}%>
 		</div>
-		<ul class="pageitem">
-			<input type="hidden" name="status" value=<%=method%>>
-		</ul>
+		
+		<input type="hidden" name="status" value=<%=method%>>
+		
     <% }%>
 		
 		<div class="div-f">

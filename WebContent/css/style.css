@@ -1300,7 +1300,7 @@ select {
 	top: 18px
 }
 
-.button input {
+.button input,li button {
 	width: 100%;
 	height: 100%;
 	-webkit-appearance: none;

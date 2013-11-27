@@ -20,7 +20,7 @@ import javax.persistence.JoinColumn;
 public class SummaryEntry {
 
 	public static final String PICK_UP = "pickup";
-	public static final String GET_DELIVERY = "getdelivery";
+	public static final String GET_DELIVERY = "delivered";
 	
 	@Id
 	@GeneratedValue
