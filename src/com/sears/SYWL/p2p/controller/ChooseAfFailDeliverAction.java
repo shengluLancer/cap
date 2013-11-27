@@ -25,13 +25,17 @@ public class ChooseAfFailDeliverAction extends Action {
 		HttpSession session=request.getSession();
 		int entry_id = (Integer)session.getAttribute("my_entry_id");
 		SummaryEntry e = Controller.api.getSummaryEntryDao().loadSummaryEntryById(entry_id);
+		String message = "";
 	
 		if(request.getParameter("yes") != null) {
-			return ("getDeliverSuccess.jsp");
+			message = "You confirmed to pick up!";
 		}
 		else {
-			return ("getDeliverSuccess.jsp");
+			message = "You decided not to buy this item!";
 		}
+		request.setAttribute("message",message);
+		
+		return "getDeliverFailNext.jsp";
 	}
 
 }
