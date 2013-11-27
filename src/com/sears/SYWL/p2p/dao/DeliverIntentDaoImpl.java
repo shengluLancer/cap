@@ -27,6 +27,7 @@ public class DeliverIntentDaoImpl extends GenericDaoImpl<DeliverIntent> implemen
 			String sql_2 = " AND DUE_TIME < " + dueTime;
 			String sql_3 = " AND ACTIVE = 0";
 			String sql = sql_1 + sql_2 + sql_3;
+			System.out.println(dueTime + "  !!!!dududududududue " + store_id + " store_idididididididi!!!!!!!!!");
 			Session hibernateSession = this.getSession();
 			HibernateUtil.beginTransaction();
 			Query query = hibernateSession.createSQLQuery(sql);

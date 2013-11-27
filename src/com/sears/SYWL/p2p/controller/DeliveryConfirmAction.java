@@ -47,7 +47,7 @@ public class DeliveryConfirmAction extends Action {
 		SummaryEntry e = Controller.api.getSummaryEntryDao().loadSummaryEntryById(my_entry_id);
 		
         String json = Controller.api.checkDeliveryAvailability(userId, latitude, longitude, address, 
-        	10, e.getOrders().size(), range, System.currentTimeMillis(), System.currentTimeMillis()+1*1000*60*60*2).toJSON();
+        	e.getStoreId(), e.getOrders().size(), range, System.currentTimeMillis(), System.currentTimeMillis()+2*60*60*1000).toJSON();
         
 		Gson gson=new Gson();
 		
