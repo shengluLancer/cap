@@ -14,7 +14,15 @@ public class CheckIntentMessage implements IJSONable {
 
 	@Override
 	public String toJSON() {
-		return JsonWrapper.wrap(this, "CheckIntent");
+		return JsonWrapper.originWrap(this);
+	}
+	
+	public ArrayList<Integer> getIntentList() {
+		return intentList;
+	}
+	
+	public boolean getAvailability() {
+		return availability;
 	}
 
 }

@@ -13,6 +13,11 @@ public class JsonWrapper {
 		return json;
 	}
 	
+	public static String originWrap(Object o) {
+		Gson gson=new Gson();
+		return gson.toJson(o);
+	}
+	
 
 	public static Object unwrap( String json, Class className ) {
 		
