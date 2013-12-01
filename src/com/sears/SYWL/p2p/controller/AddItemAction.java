@@ -44,12 +44,12 @@ public class AddItemAction extends Action {
 			 entryData = "{'storeId':3,'orders':[{'orderName':'Italian Bagels','count':4,'preTaxPrice':12.4,'tax':2.0,'totalPrice':14.4}]}";
 		}
 			
-		
+		//----------------------------------------
 		//hard code user id
+		//need to be removed
+		//----------------------------------------
 		int user_id = 1;
 		session.setAttribute("user_id", user_id);
-		
-		
 		
 		User user = Controller.api.getUserDao().loadUserById(user_id);
 		
