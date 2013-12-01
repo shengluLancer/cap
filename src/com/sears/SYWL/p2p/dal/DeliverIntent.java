@@ -1,5 +1,6 @@
 package com.sears.SYWL.p2p.dal;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -50,6 +51,9 @@ public class DeliverIntent {
 	private Set<User> pickupUsers;
 	
 	public Set<User> getPickupUsers() {
+		if(pickupUsers.size() == 0){
+			pickupUsers = new HashSet<User>();
+		}
 		return pickupUsers;
 	}
 	public void setPickupUsers(Set<User> pickupUsers) {
@@ -128,7 +132,7 @@ public class DeliverIntent {
 		return user;
 	}
 	
-	public void setUser(User user) {
+	public void setUser(User user) {		
 		this.user = user;
 	}
 	
