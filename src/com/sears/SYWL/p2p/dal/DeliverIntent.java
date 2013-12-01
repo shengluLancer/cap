@@ -1,11 +1,14 @@
 package com.sears.SYWL.p2p.dal;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
@@ -41,7 +44,17 @@ public class DeliverIntent {
 	private long due_time;
 	@Column(name="ACTIVE")
 	private int active;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name="TB_DELIVER_PICKUP_USER", joinColumns = @JoinColumn(name="DELIEVER_ID"),
+			inverseJoinColumns = @JoinColumn(name="USER_ID"))
+	private Set<User> pickupUsers;
 	
+	public Set<User> getPickupUsers() {
+		return pickupUsers;
+	}
+	public void setPickupUsers(Set<User> pickupUsers) {
+		this.pickupUsers = pickupUsers;
+	}
 	/*
 	public DeliverIntent(){}
 	public DeliverIntent(DeliverIntent intent){
@@ -106,6 +119,7 @@ public class DeliverIntent {
 	public int getReward() {
 		return reward;
 	}
+	
 	public void setReward(int reward) {
 		this.reward = reward;
 	}
@@ -113,9 +127,11 @@ public class DeliverIntent {
 	public User getUser() {
 		return user;
 	}
+	
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
 	public double getLongitude() {
 		return longitude;
 	}

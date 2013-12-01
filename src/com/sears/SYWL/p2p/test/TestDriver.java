@@ -98,12 +98,19 @@ public class TestDriver {
 				
 		User user1 = userDao.loadUserById(1);
 		User user2 = userDao.loadUserById(3);
+		User user3 = userDao.loadUserById(2);
 		for(Location l : user2.getBuyerLocationHistory())
 		System.out.println(user2.getbDay() + " : " + l.getAddress() + " momoamoamoamoamoamoa");
 		
 		DeliverIntentDao intentDao = new DeliverIntentDaoImpl();
 		intentList.get(0).setUser(user1);
+		intentList.get(0).setPickupUsers(new HashSet<User>());
+		intentList.get(0).getPickupUsers().add(user1);
+		intentList.get(0).getPickupUsers().add(user2);
 		intentList.get(1).setUser(user2);
+		intentList.get(1).setPickupUsers(new HashSet<User>());
+		intentList.get(1).getPickupUsers().add(user3);
+		intentList.get(1).getPickupUsers().add(user1);
 		intentDao.save(intentList.get(0));
 		intentDao.save(intentList.get(1));		
 		

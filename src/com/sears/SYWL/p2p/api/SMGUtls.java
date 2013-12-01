@@ -29,6 +29,6 @@ public class SMGUtls {
 	}
 	
 	public static void main(String[] args) throws TwilioRestException {
-		sendMessage("+14128011600", "Cao ni ma");
+		sendMessage("+14122307594", "Cao ni ma");
 	}
 }
