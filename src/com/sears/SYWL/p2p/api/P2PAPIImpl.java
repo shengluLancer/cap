@@ -177,6 +177,7 @@ public class P2PAPIImpl implements P2PAPI {
 		User user=userDao.loadUserById(user_id);
 		Set<Location> set=user.getDeliverLocationHistory();
 		TreeSet<Location> resultSet=new TreeSet<Location>(locationComparator);
+		resultSet.addAll(set);
 		return new LocationHistoryMessage(resultSet);
 	}
 
