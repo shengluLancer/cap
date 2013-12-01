@@ -4,6 +4,7 @@
 <%@page import="java.util.*"%>
 <%@page import="com.sears.SYWL.p2p.dal.*"%>
 <%@page import="com.sears.SYWL.p2p.dao.*"%>
+<%@page import="com.sears.SYWL.p2p.controller.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -40,10 +41,19 @@ function change() {
 <body>
 <%
 // the summary for this page
-    SummaryEntryDao seo = new SummaryEntryDaoImpl();
-	int summaryEntryId = new Integer(request.getParameter("entry_id"));
-	SummaryEntry summaryEntry = seo.loadSummaryEntryById(summaryEntryId);
+	int summaryEntryId = new Integer(request.getParameter("entry_id")); 
+	System.out.println("!!!!id!!!!~~~~~~:   "+summaryEntryId);
+		/* int summaryEntryId = 1; */
+		
+	
+	SummaryEntry summaryEntry = Controller.api.getSummaryEntryDao().loadSummaryEntryById(summaryEntryId);
+	
+	System.out.println("!!!!id!!!!~~~~~~22222:   "+summaryEntryId);
+		
 	String method = summaryEntry.getDeliverMethod();
+	
+	System.out.println("!!!!method!!!!~~~~~~   "+method);
+	
 	Iterator<Order> orderIterator = summaryEntry.getOrders().iterator();
 %>
 
