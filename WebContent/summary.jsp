@@ -35,8 +35,8 @@ function change(id) {
 	location.href = "editDetails.jsp?entry_id="+id;
 }
 
-function viewDetails() {
-	location.href="viewDetails.jsp";
+function viewDetails(id) {
+	location.href="viewDetails.jsp?entry_id="+id;
 }
 </script>
 
@@ -101,7 +101,7 @@ function viewDetails() {
 		<%System.out.println(method+"  caonimabi"); if (method.equals("delivered")){%>
 		<ul class="pageitem">
 			<li class="button">
-			<input type="button" onclick="viewDetails()" value="View Details" /></li>
+			<input type="button" onclick="viewDetails(<%=summaryEntry.getEntryId() %>)" value="View Details" /></li>
 		</ul>
 		<%}%>
 		</div>
