@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.sears.SYWL.p2p.apiobj.CheckIntentMessage;
+import com.sears.SYWL.p2p.dal.Location;
 import com.sears.SYWL.p2p.dal.SummaryEntry;
 
 public class DeliveryConfirmAction extends Action {
@@ -45,16 +46,24 @@ public class DeliveryConfirmAction extends Action {
 		//check availability
 		int my_entry_id = (Integer)session.getAttribute("my_entry_id");
 		SummaryEntry e = Controller.api.getSummaryEntryDao().loadSummaryEntryById(my_entry_id);
-		
         String json = Controller.api.checkDeliveryAvailability(userId, latitude, longitude, address, 
-        	e.getStoreId(), e.getOrders().size(), range, System.currentTimeMillis(), System.currentTimeMillis()+2*60*60*1000).toJSON();
+        		e.getStoreId(), e.getOrders().size(), range, System.currentTimeMillis(), System.currentTimeMillis()+2*60*60*1000).toJSON();
+        
+        Location l = new Location();
+        
+        l.setAddress(address);
+        l.setLatitude(latitude);
+        l.setLongitude(longitude);
+        
+        e.setDeliverLocation(l);
+        Controller.api.getSummaryEntryDao().save(e);
         
 		Gson gson=new Gson();
 		
 		CheckIntentMessage intentMessage=gson.fromJson(json, CheckIntentMessage.class);
 		
 		session.setAttribute("holding_list", intentMessage.getIntentList());
-		System.out.println(intentMessage.getIntentList());
+//		System.out.println(intentMessage.getIntentList());
 		
 		if(intentMessage.getAvailability()) {
 			return "getDeliverSuccess.jsp";
