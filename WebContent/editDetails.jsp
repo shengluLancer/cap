@@ -19,6 +19,18 @@
 <script src="javascript/jquery.stayInWebApp.js" type="text/javascript"></script>
 <script src="javascript/stay.js" type="text/javascript"></script>
 
+<script type="text/javascript"> 
+    function updateAddr() {
+    	var address = document.getElementById("address");
+    	var latitude = document.getElementById("latitude");
+    	var longitude = document.getElementById("longitude");
+    	document.getElementById("finalAddress").setAttribute("value", address.getAttribute("value"));
+    	document.getElementById("finalLatitude").setAttribute("value", latitude.getAttribute("value"));
+    	document.getElementById("finalLongitude").setAttribute("value", longitude.getAttribute("value"));
+    }
+
+</script>
+
 <title>Order Delivery Summary</title>
 <style> 
 .div-a{ float:left;width:40%} 
@@ -37,7 +49,6 @@
 		 Pickup & Deliver</div>
 </div>
 <div id="content">
-    <form action="describe.do" method="post">
     	<fieldset>
     	<%
 		if(request.getAttribute("error")!=null){
@@ -45,10 +56,26 @@
 		}
 		%>
 		
+		<form action="getDeliverLocInitAction.do" method="get">
     	<span class="graytitle">Address & Building</span>
 		<ul class="pageitem">
-			<li class="bigfield"><input placeholder="Enter Address" type="text" name="address" value="5000 Forbes Ave, Pittsburgh" /></li>
+			<li class="bigfield"><input type="text" name="address" readonly value="<%=request.getAttribute("address")==null? "5030 Centre Ave Pittsburgh" : request.getAttribute("address")%>" /></li>
 		</ul>
+		<input type="hidden" id="mode" name="mode" value="1"></input>
+		<input type="hidden" id="entry_id" name="entry_id" value="<%= request.getParameter("entry_id") %>"></input>
+		<input type="hidden" id="latitude" name="latitude" value="<%=request.getAttribute("latitude")==null? "40.4443411" : request.getAttribute("latitude")%>"></input>
+		<input type="hidden" id="longitude" name="longitude" value="<%=request.getAttribute("longitude")==null? "-79.94392949999997" : request.getAttribute("longitude")%>"></input>
+		<ul class="pageitem">   
+		    <li class="button"><input name="Edit" type="submit" value="Edit"/></li>
+		</ul>
+		</form>
+		
+		<form action="describe.do" onsubmit="updateAddr()" method="post">
+		<input type="hidden" id="entry_id" name="entry_id" value="<%= request.getParameter("entry_id") %>"></input>
+		<input type="hidden" id="finalLatitude" name="finalLatitude" value="<%=request.getAttribute("latitude")==null? "40.4443411" : request.getAttribute("latitude")%>"></input>
+		<input type="hidden" id="finalLongitude" name="finalLongitude" value="<%=request.getAttribute("longitude")==null? "-79.94392949999997" : request.getAttribute("longitude")%>"></input>
+		<input type="hidden" id="finalAddress" name="finalAddress" value="<%=request.getAttribute("address")==null? "5030 Centre Ave Pittsburgh" : request.getAttribute("address")%>"></input>
+		
 		<span class="graytitle">Detail Description (bld, fl, room)</span>
 		<ul class="pageitem">
 			<li class="bigfield"><input placeholder="Enter Description" type="text" name="description" /></li>
@@ -61,8 +88,8 @@
 			<li class="button">
 			<input name="Confirm" type="submit" value="Confirm"/></li>
 		</ul>
+		</form>
 		</fieldset>
-	</form>
 </div>
 <div id="footer">
 	<a class="noeffect">App powered by Coding Tartans</a></div>

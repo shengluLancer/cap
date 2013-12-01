@@ -3,6 +3,7 @@
 <%@page import="javax.servlet.http.*"%>
 <%@page import="java.util.*"%>
 <%@page import="com.sears.SYWL.p2p.dal.*"%>
+<%@page import="com.sears.SYWL.p2p.dao.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -18,7 +19,7 @@
 <script src="javascript/jquery.stayInWebApp.js" type="text/javascript"></script>
 <script src="javascript/stay.js" type="text/javascript"></script>
 
-<title>Order Delivery Summary</title>
+<title>View Details</title>
 <style> 
 .div-a{ float:left;width:40%} 
 .div-b{ float:left;width:25%}
@@ -31,47 +32,28 @@
 </style>
 </head>
 <script>
-function change(id) {
-	location.href = "editDetails.jsp?entry_id="+id;
-}
-
-function viewDetails() {
-	location.href="viewDetails.jsp";
+function change() {
+	location.href = "editDetails.jsp";
 }
 </script>
 
 <body>
 <%
 // the summary for this page
-	Summary ss = (Summary)session.getAttribute("my_summary");
-	Iterator<SummaryEntry> entryIterator = ss.getEntryList().iterator();
-	
+    SummaryEntryDao seo = new SummaryEntryDaoImpl();
+	int summaryEntryId = 1;
+	SummaryEntry summaryEntry = seo.loadSummaryEntryById(summaryEntryId);
+	String method = summaryEntry.getDeliverMethod();
+	Iterator<Order> orderIterator = summaryEntry.getOrders().iterator();
 %>
 
 <div id="topbar">
 	<div id="title">
-		 Order Summary</div>
+		 Order Details</div>
 </div>
 <div id="content">
-    <form action="summary.do" method="post">
-    
-    <% 
-    	int counter=0;
-    	while(entryIterator.hasNext()) {
-    	SummaryEntry summaryEntry = entryIterator.next();
-    	String method = summaryEntry.getDeliverMethod();
-    	//if pick up, then the summary Entry here don't have Location in it!
-    	String message = null;
-    	if(method.equals("delivered"))
-    		message = "Get delivered now (in 30 min)";
-    	else
-    		message = "pick up now";
-    	Iterator<Order> orderIterator = summaryEntry.getOrders().iterator();
-    %>
-    	<div class="div-d">
     	<ul class="pageitem">
 		<li class="textbox"><span class="header"> <font size="5"><%="I am store #" + summaryEntry.getStoreId() %></font></span>
-    		<p><%=message%></p><br>
     	</li>
     	<% while(orderIterator.hasNext()){ 
     		   Order order = orderIterator.next();
@@ -80,44 +62,39 @@ function viewDetails() {
     	<li> <div class="div-a" style="margin-left:10%;font-size:15pt"><%=order.getOrderName()%></div> 
     		 <div class="div-b" style="font-size:15pt"><%=order.getCount()%></div>  
     		 <div class="div-b" style="font-size:15pt"><%="$"+ price + " (tax: " + order.getTax() + ")" %></div> 
-    	</li>
-		<li> <div class="div-a" style="margin-left:10%;font-size:15pt">Subtotal</div>
-			 <div class="div-c" style="margin-right:2%;font-size:15pt"><%=order.getTotalPrice()%></div> 
-		</li> 
+    	</li> 
     	<% }%>
     	 </ul>
-	    </div>
 	    
-	    <div class="div-e">
 	    <%if (method.equals("pickup")){%>
 	    <span class="graytitle">Deliver for others?</span>
 	    <ul class="pageitem">
-			<li class="radiobutton"><span class="name">Yes</span>
-			<input name="delivertype<%=counter%>" type="radio" value="forOthers" onChange="change(<%=summaryEntry.getEntryId() %>)" <%= summaryEntry.getDeliverLocation()!=null? "checked":""  %> /></li>
-			<li class="radiobutton"><span class="name">No</span>
-			<input name="delivertype<%=counter++%>" type="radio" value="forSelf" <%= summaryEntry.getDeliverLocation()!=null? "":"checked"  %>/></li>
+			<li>Subtotal Price: <%= summaryEntry.getSubtotalPrice()%>></li>
+			<li>Deliver Method: <%= method %></li>
+			<% if(summaryEntry.getMaxDeliverCount() > 0) { %>
+			    <li>You choose to deliver for other people</li>
+			    <li>Max Deliver Count: <%= summaryEntry.getMaxDeliverCount()%>></li>
+			    <li>Deliver Address: <%= summaryEntry.getDeliverLocation().getAddress() %></li>
+			    <li>Detailed Detailed Description: <%= summaryEntry.getDetailedDescription()%></li>
+			    <li>Max SYWL Points: <%= summaryEntry.getMaxPoints() %></li>
+			    <li>These orders are placed at time: <%= summaryEntry.getDeliverTime() %></li>
+			<% } %>
 		</ul>
 		<%}%>
-		<%System.out.println(method+"  caonimabi"); if (method.equals("delivered")){%>
+        <%if (method.equals("delivered")){%>
 		<ul class="pageitem">
-			<li class="button">
-			<input type="button" onclick="viewDetails()" value="View Details" /></li>
+			<li>Deliver Address: <%= summaryEntry.getDeliverLocation().getAddress() %></li>
 		</ul>
 		<%}%>
 		</div>
-		
-		<input type="hidden" name="status" value=<%=method%>>
-		
-    <% }%>
 		
 		<div class="div-f">
 		<ul class="pageitem">
 			<li class="button">
-			<input name="summarySubmit" type="submit" value="Submit"/></li>
+<!-- 			<a href="summary.jsp" class="button">Submit</a> -->
+				<input type="submit" value="Return" onclick="window.location.href='summary.jsp'; return false;"/>
+			</li>
 		</ul>
-		</div>
-		
-	</form>
 </div>
 <div id="footer">
 	<a class="noeffect">App powered by Coding Tartans</a>

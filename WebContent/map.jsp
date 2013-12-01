@@ -45,9 +45,11 @@ $(document).ready(function() {
 		target_url= "getbuyerlochis.do";
 	}
 	else{
-
+		//mode == 1
 		target_url= "getdellochis.do";
 	}
+	
+	/* console.log(target_url); */
 	
     //get location history info
     $.ajax({
@@ -230,6 +232,7 @@ $(document).ready(function() {
         
         <ul class="pageitem">
             <form action="locationAction.do" method="get">
+            	<input type="hidden" id="entry_id" name="entry_id" value="<%= request.getParameter("entry_id") %>"></input>
                 <input type="hidden" id="confirmAddr" name="confirmAddr" value=""></input>
                 <input type="hidden" id="confirmLongitude" name="confirmLongitude" value=""></input>
                 <input type="hidden" id="confirmLatitude" name="confirmLatitude" value=""></input>

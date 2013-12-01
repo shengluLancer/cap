@@ -41,7 +41,14 @@
 </div>
 <div id="content">
     	<fieldset>
-    	<span class="graytitle">No P2P Deliver Available!</span>
+    	<form action="chooseAfFailDeliverAction.do" method="get">
+    	<span class="graytitle">Sorry, we cannot find a  P2P deliverer for you! Would you like to pick up instead?</span>
+    	<ul class="pageitem">
+			<li class="button"><input name="yes" id="yes" type="submit" value="Yes"/></li>
+		</ul>
+		<ul class="pageitem">
+			<li class="button"><input name="no" id="no" type="submit" value="No"/></li>
+		</ul>
 		</form>
 		</fieldset>
 </div>

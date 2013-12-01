@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -20,7 +21,7 @@ import javax.persistence.JoinColumn;
 public class SummaryEntry {
 
 	public static final String PICK_UP = "pickup";
-	public static final String GET_DELIVERY = "getdelivery";
+	public static final String GET_DELIVERY = "delivered";
 	
 	@Id
 	@GeneratedValue
@@ -41,7 +42,7 @@ public class SummaryEntry {
 	@Column(name="DELIVER_TIME")
 	private long deliverTime;
 	 
-	@OneToOne(orphanRemoval = true, cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinTable(name="TB_ENTRY_LOCATION", 
 			   joinColumns = @JoinColumn(name="ENTRY_ID"),
 			   inverseJoinColumns = @JoinColumn(name="LOCATION_ID"))

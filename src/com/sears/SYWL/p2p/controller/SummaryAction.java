@@ -7,6 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sears.SYWL.p2p.apiobj.IJSONable;
+import com.sears.SYWL.p2p.dal.Summary;
+
 public class SummaryAction extends Action {
 	
 	public String ACTION_NAME="summary.do";
@@ -19,32 +22,9 @@ public class SummaryAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request, PrintWriter writer) {
-		if(request.getParameter("viewDetails") != null)
-		{
-            return("viewDetails.jsp");	
-		}
-		else
-		{
-			String status = (String) request.getParameter("status");
-			
-			if(status.equals("delivered"))
-			{
-	            return("success.jsp");	
-			}
-			else
-			{
-				String deliverForOthers = (String)request.getParameter("delivertype");
-		
-				if(deliverForOthers.equals("forOthers"))
-				{
-		            return("editDetails.jsp");	
-				}
-				else
-				{
-		            return("success.jsp");	
-				}
-			}
-		}
+		Summary summary=(Summary)request.getSession().getAttribute("my_summary");
+		IJSONable returnMessage=Controller.api.confirmSummary(summary);
+		return "out";
 	}
 
 }

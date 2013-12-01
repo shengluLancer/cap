@@ -26,7 +26,7 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
         
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hbm2ddl.auto">update</property>
  
  
  		<mapping class="com.sears.SYWL.p2p.dal.Order"/>
@@ -35,6 +35,7 @@
  		<mapping class="com.sears.SYWL.p2p.dal.DeliverIntent"/>
  		<mapping class="com.sears.SYWL.p2p.dal.SummaryEntry"/> 		
  		<mapping class="com.sears.SYWL.p2p.dal.Summary"/>
+ 		<mapping class="com.sears.SYWL.p2p.dal.Store"/>
  		
     </session-factory>
 </hibernate-configuration>

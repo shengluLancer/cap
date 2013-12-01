@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>   
 <%@ page import="javax.servlet.http.*"%>
+<%@ page import="com.sears.SYWL.p2p.controller.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 
@@ -38,13 +39,65 @@
 <div id="content">
     <form action="addItemAction.do" method="get">
     	<fieldset>
-    	<span class="graytitle">Little Asia</span>
-		<ul class="pageitem">
-			<li class="bigfield"><input type="text" id="item" name="item" readonly value="Chicken Over Rice"/></li>
-		</ul>
+    	
+    	<%  
+    	int num = 1;
+    	session = request.getSession();
+    	
+    	if(session.getAttribute("entry_data_number")==null) {
+
+        	session.setAttribute("entry_data_number", 1);	
+    	}
+    	else {
+    		num = (Integer)session.getAttribute("entry_data_number");
+    		num++;
+    		if(num == 4) {
+    			num =1;
+    		}
+    		session.setAttribute("entry_data_number", num);
+    		
+    	}
+    	
+    	
+    	%>
+    	
+				    	<% if(num==1) {
+				    	%>
+				    	
+				    	<span class="graytitle"><%= Controller.api.getStoreDao().loadStoreById(1).getStoreName() %></span>
+						<ul class="pageitem">
+							<li class="bigfield"><input type="text" id="item" name="item" readonly value="Chicken Over Rice * 1"/></li>
+						</ul>
+						
+						<% } %>
+						
+						
+						<% if(num==2) {
+				    	%>
+				    	
+				    	<span class="graytitle"><%=Controller.api.getStoreDao().loadStoreById(2).getStoreName()%></span>
+						<ul class="pageitem">
+							<li class="bigfield"><input type="text" id="item" name="item" readonly value="Bubble Tea * 2"/></li>
+						</ul>
+						
+						<% } %>
+						
+						
+						<% if(num==3){
+				    	%>
+				    	
+				    	<span class="graytitle"><%=Controller.api.getStoreDao().loadStoreById(3).getStoreName()%></span>
+						<ul class="pageitem">
+							<li class="bigfield"><input type="text" id="item" name="item" readonly value="Italian Bagels * 4"/></li>
+						</ul>
+						
+						<% } %>
+		
+		
 		<ul class="pageitem">
 			<li class="button"><input name="buy" id="buy" type="submit" value="BUY"/></li>
 		</ul>
+		
 		</form>
 		</fieldset>
 	</form>

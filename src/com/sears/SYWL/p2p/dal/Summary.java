@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,7 +24,7 @@ public class Summary {
 	@Column(name="SUMMARY_ID")
 	private int summaryId;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinTable(name="TB_SUMMARY_USER", 
 			   joinColumns = @JoinColumn(name="SUMMARY_ID"),
 			   inverseJoinColumns = @JoinColumn(name="USER_ID"))

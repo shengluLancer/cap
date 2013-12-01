@@ -7,6 +7,7 @@ import com.sears.SYWL.p2p.dal.SummaryEntry;
 import com.sears.SYWL.p2p.dao.DeliverIntentDao;
 import com.sears.SYWL.p2p.dao.LocationDao;
 import com.sears.SYWL.p2p.dao.OrderDao;
+import com.sears.SYWL.p2p.dao.StoreDao;
 import com.sears.SYWL.p2p.dao.SummaryDao;
 import com.sears.SYWL.p2p.dao.SummaryEntryDao;
 import com.sears.SYWL.p2p.dao.UserDao;
@@ -115,5 +116,7 @@ public interface P2PAPI {
 	public LocationDao getLocationDao();
 	
 	public OrderDao getOrderDao();
+	
+	public StoreDao getStoreDao();
 	
 }
