@@ -29,6 +29,10 @@ public class ChooseAfFailDeliverAction extends Action {
 	
 		if(request.getParameter("yes") != null) {
 			message = "You confirmed to pick up!";
+			e.setDeliverMethod(SummaryEntry.PICK_UP);
+			
+			//save the change of method into the database
+			Controller.api.getSummaryEntryDao().save(e);
 		}
 		else {
 			message = "You decided not to buy this item!";
