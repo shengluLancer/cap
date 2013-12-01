@@ -41,7 +41,7 @@ function change() {
 <%
 // the summary for this page
     SummaryEntryDao seo = new SummaryEntryDaoImpl();
-	int summaryEntryId = 1;
+	int summaryEntryId = new Integer(request.getParameter("entry_id"));
 	SummaryEntry summaryEntry = seo.loadSummaryEntryById(summaryEntryId);
 	String method = summaryEntry.getDeliverMethod();
 	Iterator<Order> orderIterator = summaryEntry.getOrders().iterator();
@@ -64,10 +64,10 @@ function change() {
     		 <div class="div-b" style="font-size:15pt"><%="$"+ price + " (tax: " + order.getTax() + ")" %></div> 
     	</li> 
     	<% }%>
+    	<%=method %>
     	 </ul>
 	    
 	    <%if (method.equals("pickup")){%>
-	    <span class="graytitle">Deliver for others?</span>
 	    <ul class="pageitem">
 			<li>Subtotal Price: <%= summaryEntry.getSubtotalPrice()%>></li>
 			<li>Deliver Method: <%= method %></li>
