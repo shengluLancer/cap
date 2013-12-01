@@ -24,6 +24,8 @@
     .div-a{ float:left;width:40%} 
     .div-b{ float:left;width:25%}
     .div-c{ float:left;width:47%}
+    .div-d{ float:left;width:80%}
+    .div-e{ float:left;width:20%}
     </style>
   
     <script src="http://maps.google.com/maps?file=api&v=2&AIzaSyA0pN_fGQIvH58XsO8LERRTPOrvSIxHMVk&sensor=false"  
@@ -220,11 +222,13 @@ $(document).ready(function() {
         <form action="#" onsubmit="showAddr(this.newAddress.value); return false">  
         <span class="graytitle">Enter New Location</span>
         <ul class="pageitem">
-			<li class="bigfield"><input placeholder="Enter New Location" type="text" id="newAddress" name="newAddress" /></li>
+            <div class="div-d"><li class="bigfield"><input placeholder="Enter New Location" type="text" id="newAddress" name="newAddress" /></li></div>
+			<div class="div-e"><li class="button"><input name="select" type="submit" value="Select"/></li></div>
+			
 		</ul>
-		<ul class="pageitem">
-			<li class="button"><input name="select" type="submit" value="Select"/></li>
-		</ul> 
+<!-- 		<ul class="pageitem">
+			
+		</ul>  -->
         </form>  
         
         <span class="graytitle">Chosen Location</span> 
