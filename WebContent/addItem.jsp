@@ -30,8 +30,6 @@
 <body>
 
 <div id="topbar">
-	<div id="leftnav">
-		<a href="summary.jsp">Back</a></div>
 
 	<div id="title">
 		 SHOP Your Way</div>

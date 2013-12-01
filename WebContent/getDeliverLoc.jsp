@@ -46,7 +46,7 @@
 
 <div id="topbar">
 	<div id="leftnav">
-		<a href="summary.jsp">Back</a></div>
+		<a href="chooseMethod.jsp">Back</a></div>
 
 	<div id="title">
 		 Get Items Delivered</div>
