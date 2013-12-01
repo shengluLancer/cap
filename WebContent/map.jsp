@@ -63,6 +63,9 @@ $(document).ready(function() {
     		var locations = obj.LocationHistory.locations;
 
         	var i = 1;
+        	if(locations.length > 0) {
+        		innerHtml += "<span class=\"graytitle\">Recent Locations</span>";
+        	}
           	while(i < locations.length+1 && i < 4 ) {
         		innerHtml += 
         		"<form action=\"#\" onsubmit=\"showAddr(this.hisLoc" + i + ".value); return false\">" +
@@ -210,8 +213,7 @@ $(document).ready(function() {
             <li class="button"><input name="currentAddress" id="currentAddress" type="submit" value="5030 Centre Ave, Pittsburgh"/></li>
 		</ul>
         </form>
-     
-        <span class="graytitle">Recent Locations</span>
+        
         <div id="locHistDiv">
         </div>
             
