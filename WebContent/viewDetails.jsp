@@ -42,17 +42,12 @@ function change() {
 <%
 // the summary for this page
 	int summaryEntryId = new Integer(request.getParameter("entry_id")); 
-	System.out.println("!!!!id!!!!~~~~~~:   "+summaryEntryId);
 		/* int summaryEntryId = 1; */
 		
 	
 	SummaryEntry summaryEntry = Controller.api.getSummaryEntryDao().loadSummaryEntryById(summaryEntryId);
-	
-	System.out.println("!!!!id!!!!~~~~~~22222:   "+summaryEntryId);
 		
 	String method = summaryEntry.getDeliverMethod();
-	
-	System.out.println("!!!!method!!!!~~~~~~   "+method);
 	
 	Iterator<Order> orderIterator = summaryEntry.getOrders().iterator();
 %>
@@ -74,11 +69,11 @@ function change() {
     		 <div class="div-b" style="font-size:15pt"><%="$"+ price + " (tax: " + order.getTax() + ")" %></div> 
     	</li> 
     	<% }%>
-    	<%=method %>
-    	 </ul>
+    	<li><br/><br/></li>
 	    
-	    <%if (method.equals("pickup")){%>
-	    <ul class="pageitem">
+	    <div style="margin-left:10%;font-size:15pt">
+	    <%if (method.equals(summaryEntry.PICK_UP)){%>
+	        <li>You chose to pick up by yourself!</li>
 			<li>Subtotal Price: <%= summaryEntry.getSubtotalPrice()%>></li>
 			<li>Deliver Method: <%= method %></li>
 			<% if(summaryEntry.getMaxDeliverCount() > 0) { %>
@@ -91,11 +86,12 @@ function change() {
 			<% } %>
 		</ul>
 		<%}%>
-        <%if (method.equals("delivered")){%>
-		<ul class="pageitem">
+        <%if (!method.equals(summaryEntry.PICK_UP)){%>
+		    <li>You chose to get delivered by P2P</li>
 			<li>Deliver Address: <%= summaryEntry.getDeliverLocation().getAddress() %></li>
 		</ul>
 		<%}%>
+		</div>
 		</div>
 		
 		<div class="div-f">

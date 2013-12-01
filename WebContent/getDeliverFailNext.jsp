@@ -40,7 +40,7 @@
 <div id="content">
     	<fieldset>
     	<form action="chooseAfSuccessDeliverAction.do" method="get">
-    	<span class="graytitle"><%=request.getAttribute("message") %>></span>
+    	<span class="graytitle"><%=request.getAttribute("message") %></span>
     	<ul class="pageitem">
 			<li class="button"><input name="checkout" id="checkout" type="submit" value="Check out"/></li>
 		</ul>
