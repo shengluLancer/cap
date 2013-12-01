@@ -24,8 +24,8 @@
     .div-a{ float:left;width:40%} 
     .div-b{ float:left;width:25%}
     .div-c{ float:left;width:47%}
-    .div-d{ float:left;width:80%}
-    .div-e{ float:left;width:20%}
+    .div-d{ float:left;width:70%}
+    .div-e{ float:left;width:30%}
     </style>
   
     <script src="http://maps.google.com/maps?file=api&v=2&AIzaSyA0pN_fGQIvH58XsO8LERRTPOrvSIxHMVk&sensor=false"  
