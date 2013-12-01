@@ -72,7 +72,7 @@ $(document).ready(function() {
         		innerHtml += 
         		"<form action=\"#\" onsubmit=\"showAddr(this.hisLoc" + i + ".value); return false\">" +
         		"<ul class=\"pageitem\">" +
-                "<li class=\"button\"><input name=\"hisLoc" + i + "\" id=\"hisLoc" + i + "\" type=\"submit\" value=\""+ locations[i-1].address +"\"/></li>" +
+                "<li class=\"button\"><input name=\"hisLoc" + i + "\" id=\"hisLoc" + i + "\" type=\"submit\" value=\""+ locations[i-1].address +"\" + style=\"width:100%; word-wrap:break-word\"/></li>" +
                 "</ul></form>";
         		i++;
         	} 
@@ -207,7 +207,7 @@ $(document).ready(function() {
 <div id="content">
    
     <fieldset>
-        
+    
         <input type="hidden" name="mode" id="mode" value="<%=request.getAttribute("mode")%>"/>
         <form action="#" onsubmit="showAddr(this.currentAddress.value); return false"> 
     	<span class="graytitle">Current Location</span> 
@@ -216,7 +216,7 @@ $(document).ready(function() {
 		</ul>
         </form>
         
-        <div id="locHistDiv">
+        <div id="locHistDiv" style="width:100%; word-wrap: break-word;">
         </div>
             
         <form action="#" onsubmit="showAddr(this.newAddress.value); return false">  
@@ -224,11 +224,7 @@ $(document).ready(function() {
         <ul class="pageitem">
             <div class="div-d"><li class="bigfield"><input placeholder="Enter New Location" type="text" id="newAddress" name="newAddress" /></li></div>
 			<div class="div-e"><li class="button"><input name="select" type="submit" value="Select"/></li></div>
-			
 		</ul>
-<!-- 		<ul class="pageitem">
-			
-		</ul>  -->
         </form>  
         
         <span class="graytitle">Chosen Location</span> 
