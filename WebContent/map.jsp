@@ -204,7 +204,7 @@ $(document).ready(function() {
 	<div id="title">
 		 Choose Location</div>
 </div>
-<div id="content">
+<div id="content" style="overflow:auto">
    
     <fieldset>
     

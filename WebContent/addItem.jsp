@@ -20,11 +20,12 @@
 <script src="javascript/stay.js" type="text/javascript"></script>
 
 <title>Get Items Delivered</title>
-<style> 
-.div-a{ float:left;width:40%} 
-.div-b{ float:left;width:25%}
-.div-c{ float:left;width:47%}
-</style>
+
+<script type="text/javascript"> 
+    function switchItem() {
+    	window.location.reload();
+    }
+</script>
 
 
 <body>
@@ -94,6 +95,10 @@
 		
 		<ul class="pageitem">
 			<li class="button"><input name="buy" id="buy" type="submit" value="BUY"/></li>
+		</ul>
+		
+		<ul class="pageitem">
+			<li class="button"><input name="buy" id="buy" type="button" value="Switch Store & Item" onclick="switchItem()"/></li>
 		</ul>
 		
 		</form>
