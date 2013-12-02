@@ -24,6 +24,12 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
         HibernateUtil.beginTransaction();
         hibernateSession.saveOrUpdate(entity);
         HibernateUtil.commitTransaction();
+        try {
+			Thread.sleep(20);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			System.out.println("mamaibi");
+		}
       // HibernateUtil.closeSession();
     }
 	
