@@ -4,3 +4,7 @@ build/*
 .classpath
 bin/*
 /build
+
+src/hibernate.cfg.xml
+
+*.xml
