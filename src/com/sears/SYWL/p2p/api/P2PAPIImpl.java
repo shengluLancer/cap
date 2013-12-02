@@ -75,7 +75,7 @@ public class P2PAPIImpl implements P2PAPI {
 		
 		for(DeliverIntent intent:intentList) {
 			if(GeographyUtils.distanceOnEarth(lat_dest, lng_dest, intent.getLatitude(), 
-					intent.getLongitude())>pickUpRange) {
+					intent.getLongitude())>pickUpRange || intent.getCapacity()==0) {
 				continue;
 			}
 			leftGoods=holdIntent(intent,leftGoods,user_id);
