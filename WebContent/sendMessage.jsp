@@ -43,6 +43,8 @@ function sendMessage(n, e_id) {
 	document.getElementById('my_submit_button'+n).disabled = 'disabled';
 	document.getElementById('my_submit_button'+n).setAttribute("value", "Notification Sent!");
 	
+	console.log("entry_id:   "+e_id);
+	
 	//ajax send message
 	var target_url= "sendMessage.do";
 	 $.ajax({
