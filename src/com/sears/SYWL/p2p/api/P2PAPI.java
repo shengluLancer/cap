@@ -1,5 +1,7 @@
 package com.sears.SYWL.p2p.api;
 
+import java.util.List;
+
 import com.sears.SYWL.p2p.apiobj.IJSONable;
 import com.sears.SYWL.p2p.dal.DeliverIntent;
 import com.sears.SYWL.p2p.dal.Summary;
@@ -11,6 +13,7 @@ import com.sears.SYWL.p2p.dao.StoreDao;
 import com.sears.SYWL.p2p.dao.SummaryDao;
 import com.sears.SYWL.p2p.dao.SummaryEntryDao;
 import com.sears.SYWL.p2p.dao.UserDao;
+import com.twilio.sdk.TwilioRestException;
 
 
 public interface P2PAPI {
@@ -42,7 +45,7 @@ public interface P2PAPI {
 	// lock a order spot
 	// return true if successfully hold a spot in a DeliveryIntent
 	// @ only for internal use
-	public int holdIntent(DeliverIntent intent, int numOfGoods );
+	public int holdIntent(DeliverIntent intent, int numOfGoods, int user_id);
 
 	// The user didn't finally confirm the delivery, then release the according delivery intent
 	// @POST  @AJAX
@@ -85,6 +88,8 @@ public interface P2PAPI {
 	//
 	// @GET
 	public IJSONable getLocationHistoryByUserId_Deliverer( int user_id );
+	
+	public IJSONable sendMessage(int summaryentry_id, int intent_id)  throws TwilioRestException;
 	
 	
 

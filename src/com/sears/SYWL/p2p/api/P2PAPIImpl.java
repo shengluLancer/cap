@@ -16,6 +16,7 @@ import com.sears.SYWL.p2p.dal.DeliverIntent;
 import com.sears.SYWL.p2p.dal.Location;
 import com.sears.SYWL.p2p.dal.Order;
 import com.sears.SYWL.p2p.dal.Summary;
+import com.sears.SYWL.p2p.dal.SummaryEntry;
 import com.sears.SYWL.p2p.dal.User;
 import com.sears.SYWL.p2p.dao.DeliverIntentDao;
 import com.sears.SYWL.p2p.dao.DeliverIntentDaoImpl;
@@ -31,6 +32,7 @@ import com.sears.SYWL.p2p.dao.SummaryEntryDao;
 import com.sears.SYWL.p2p.dao.SummaryEntryDaoImpl;
 import com.sears.SYWL.p2p.dao.UserDao;
 import com.sears.SYWL.p2p.dao.UserDaoImpl;
+import com.twilio.sdk.TwilioRestException;
 
 public class P2PAPIImpl implements P2PAPI {
 	
@@ -75,7 +77,7 @@ public class P2PAPIImpl implements P2PAPI {
 					intent.getLongitude())>pickUpRange) {
 				continue;
 			}
-			leftGoods=holdIntent(intent,leftGoods);
+			leftGoods=holdIntent(intent,leftGoods,user_id);
 			deliverIntentDao.save(intent);
 			matchedList.add(intent.getDeliverId());
 			if(leftGoods==0) return new CheckIntentMessage(true, matchedList);
@@ -86,14 +88,18 @@ public class P2PAPIImpl implements P2PAPI {
 	}
 
 	@Override
-	public int holdIntent(DeliverIntent intent, int numOfGoods) {
+	public int holdIntent(DeliverIntent intent, int numOfGoods, int user_id) {
 		
 		int capacity=intent.getCapacity();
 		if(capacity<numOfGoods) {
 			intent.setCapacity(0);
+			User user=userDao.loadUserById(user_id);
+			intent.getPickupUsers().add(user);
 			return numOfGoods-capacity;
 		}
 		else {
+			User user=userDao.loadUserById(user_id);
+			intent.getPickupUsers().add(user);
 			intent.setCapacity(intent.getCapacity()- numOfGoods);
 			return 0;
 		}
@@ -103,7 +109,6 @@ public class P2PAPIImpl implements P2PAPI {
 	public IJSONable releaseIntent(int intent_id, int numOfGoods) {
 		// TODO Auto-generated method stub
 		DeliverIntent intent=deliverIntentDao.loadIntentById(intent_id);
-		int capacity=intent.getCapacity();
 		if(intent.getCapacity()==0) { //TODO Add this method..
 			intent.setCapacity(numOfGoods);
 		}
@@ -257,6 +262,22 @@ public class P2PAPIImpl implements P2PAPI {
 	@Override
 	public StoreDao getStoreDao() {
 		return this.storeDao;
+	}
+
+	@Override
+	public IJSONable sendMessage(int summaryentry_id, int intent_id) throws TwilioRestException {
+		SummaryEntry summaryEntry=summaryEntryDao.loadSummaryEntryById(summaryentry_id);
+		DeliverIntent intent=deliverIntentDao.loadIntentById(intent_id);
+ 		Set<User> set=intent.getPickupUsers();
+		for (User user : set) {
+			StringBuilder sb=new StringBuilder();
+			sb.append("Hi ").append(user.getfName()).append(", ");
+			sb.append("your order has been delivered. Please come to ").append(summaryEntry.getDeliverLocation().getAddress());
+			sb.append(" to pick up your goods. Additional Info from deliverer: ").append(summaryEntry.getDetailedDescription());
+			SMGUtls.sendMessage(user.getPhoneNumber(), sb.toString());
+		}
+		
+		return new SimpleMessage("true");
 	}
 	
 
