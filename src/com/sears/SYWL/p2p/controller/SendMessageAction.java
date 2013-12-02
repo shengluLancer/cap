@@ -28,7 +28,7 @@ public class SendMessageAction extends Action {
 		int intent_id = Integer.parseInt(request.getParameter("intent_id"));
 		
 		try{
-			Controller.api.sendMessage(summaryentry_id, intent_id);
+			Controller.api.sendMessage(summaryentry_id);
 		}
 		catch(Exception e) {
 			System.out.println("Something wrong with SMS function!");
