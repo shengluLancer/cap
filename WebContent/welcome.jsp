@@ -55,26 +55,6 @@
     <form action="welcomeAction.do" method="get">
     	<fieldset>
     	
-    	<%  
-    	int num = 1;
-    	session = request.getSession();
-    	
-    	if(session.getAttribute("entry_data_number")==null) {
-
-        	session.setAttribute("entry_data_number", 1);	
-    	}
-    	else {
-    		num = (Integer)session.getAttribute("entry_data_number");
-    		num++;
-    		if(num == 4) {
-    			num =1;
-    		}
-    		session.setAttribute("entry_data_number", num);
-    		
-    	}
-    	
-    	
-    	%>
 		<span class="graytitle">Welcome to SHOP Your Way!</span><br></br>
 		<span class="graytitle">Please enter your name</span><br></br>
 		   <div class="div-c"><ul class="pageitem"><li class="bigfield"><input placeholder="First Name" type="text" id="firstName" name="firstName"/></li></ul></div>

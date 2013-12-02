@@ -31,11 +31,10 @@ public class WelcomeAction extends Action {
 		HttpSession session = request.getSession();
 		
 		
-		//hard code user id
-		int user_id = 1;
-		session.setAttribute("user_id", user_id);
+//		//hard code user id
+//		int user_id = 1;
+//		session.setAttribute("user_id", user_id);
 		
-		User user = Controller.api.getUserDao().loadUserById(user_id);
 		
 		
 		String firstName = request.getParameter("firstName");
@@ -45,7 +44,16 @@ public class WelcomeAction extends Action {
 		System.out.println(lastName);
 		System.out.println(phoneNumber);
 		
-
+		//create a new user
+		User user = new User();
+		user.setfName(firstName);
+		user.setlName(lastName);
+		user.setPhoneNumber(phoneNumber);
+		Controller.api.getUserDao().save(user);
+		
+		int user_id = user.getUserId();
+		session.setAttribute("user_id", user_id);
+		
 		return ("addItem.jsp");
 	}
 	

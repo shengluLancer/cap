@@ -48,10 +48,10 @@ public class AddItemAction extends Action {
 		//hard code user id
 		//need to be removed
 		//----------------------------------------
-		int user_id = 1;
-		session.setAttribute("user_id", user_id);
-		
-		User user = Controller.api.getUserDao().loadUserById(user_id);
+//		int user_id = 1;
+//		session.setAttribute("user_id", user_id);
+		int user_id = (int)session.getAttribute("user_id");
+		User user = Controller.api.getUserDao().loadUserById((int)session.getAttribute("user_id"));
 		
 		SummaryEntry newEntry = (SummaryEntry)JsonWrapper.unwrap(entryData, SummaryEntry.class);
 
@@ -76,8 +76,6 @@ public class AddItemAction extends Action {
 		ss.setUser(user);
 		
 		Controller.api.getSummaryDao().save(ss);
-		
-		System.out.println("qunidagedexiezi "+newEntry.getEntryId());
 		
 		session.setAttribute("my_entry_id", newEntry.getEntryId());
 		
