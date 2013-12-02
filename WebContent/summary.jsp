@@ -45,7 +45,7 @@ function viewDetails(id) {
 // the summary for this page
 	Summary ss = (Summary)session.getAttribute("my_summary");
 	Iterator<SummaryEntry> entryIterator = ss.getEntryList().iterator();
-	
+	boolean flag = false;
 %>
 
 <div id="topbar">
@@ -89,7 +89,7 @@ function viewDetails(id) {
 	    </div>
 	    
 	    <div class="div-e">
-	    <%if (method.equals("pickup")){%>
+	    <%if (method.equals("pickup")){ flag = true;%>
 	    <span class="graytitle">Deliver for others?</span>
 	    <ul class="pageitem">
 			<li class="radiobutton"><span class="name">Yes</span>
@@ -108,7 +108,10 @@ function viewDetails(id) {
 		
 		<input type="hidden" name="status" value=<%=method%>>
 		
-    <% }%>
+    <% }
+    	session = request.getSession();
+    	session.setAttribute("flag", flag);
+    %>
 		
 		<div class="div-f">
 		<ul class="pageitem">
