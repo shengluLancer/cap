@@ -54,6 +54,7 @@ public class Controller extends HttpServlet {
 		Action.add(new LocationAction());
 		Action.add(new ChooseAfSuccessDeliverAction());
 		Action.add(new ChooseAfFailDeliverAction());
+		Action.add(new WelcomeAction());
 	}
 	
 	
