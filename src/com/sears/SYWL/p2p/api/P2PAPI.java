@@ -76,7 +76,8 @@ public interface P2PAPI {
 	//
 	// @POST
 	public IJSONable registerDeliveryIntent( int user_id, int capacity, long date,
-			double lat_dest, double lng_dest,String address,  int store_id, int reward, int summaryentry_id);
+	double lat_dest, double lng_dest,String address,  int store_id, int reward, int summaryentry_id);
+
 	
 	// When the pick-up food is ready, the seller sent the message to our backend system
 	// Then this Intent is put into the pool of intents

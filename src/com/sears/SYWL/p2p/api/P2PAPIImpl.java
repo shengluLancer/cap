@@ -149,8 +149,7 @@ public class P2PAPIImpl implements P2PAPI {
 
 	@Override
 	public IJSONable registerDeliveryIntent(int user_id, int capacity,
-			long date, double lat_dest, double lng_dest, String address, int store_id,
-			int reward,int summaryentry_id) {
+			long date, double lat_dest, double lng_dest, String address, int store_id, int reward,int summaryentry_id) {
 		DeliverIntent dIntent=new DeliverIntent();
 		dIntent.setStore_id(store_id);
 		User user =userDao.loadUserById(user_id);
