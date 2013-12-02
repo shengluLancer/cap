@@ -282,8 +282,8 @@ System.out.println("check intent id: " +  intent.getDeliverId());
 		for (User user : set) {
 			StringBuilder sb=new StringBuilder();
 			sb.append("Hi ").append(user.getfName()).append(", ");
-			sb.append("your order has been delivered. Please come to ").append(summaryEntry.getDeliverLocation().getAddress());
-			sb.append(" to pick up your goods. Additional Info from deliverer: ").append(summaryEntry.getDetailedDescription());
+			sb.append("Come to ").append(summaryEntry.getDeliverLocation().getAddress());
+			sb.append(" to pick up. Info: ").append(summaryEntry.getDetailedDescription());
 			SMGUtls.sendMessage(user.getPhoneNumber(), sb.toString());
 		}
 		
