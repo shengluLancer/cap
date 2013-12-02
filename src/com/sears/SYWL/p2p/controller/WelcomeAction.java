@@ -43,6 +43,7 @@ public class WelcomeAction extends Action {
 		System.out.println(firstName);
 		System.out.println(lastName);
 		System.out.println(phoneNumber);
+		System.out.println(System.currentTimeMillis());
 		
 		//create a new user
 		User user = new User();
