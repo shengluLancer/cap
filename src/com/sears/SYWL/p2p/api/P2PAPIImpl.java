@@ -284,6 +284,11 @@ System.out.println("check intent id: " +  intent.getDeliverId());
 			sb.append("Hi ").append(user.getfName()).append(", ");
 			sb.append("Come to ").append(summaryEntry.getDeliverLocation().getAddress());
 			sb.append(" to pick up. Info: ").append(summaryEntry.getDetailedDescription());
+			
+
+			System.out.println("message:   "+sb.toString());
+			System.out.println("message length:   "+sb.toString().length());
+			
 			SMGUtls.sendMessage(user.getPhoneNumber(), sb.toString());
 		}
 		
