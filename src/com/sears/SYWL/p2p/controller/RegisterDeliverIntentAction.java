@@ -25,9 +25,10 @@ public class RegisterDeliverIntentAction extends Action {
 		int store_id=Integer.parseInt(request.getParameter("store_id"));
 		int reward=Integer.parseInt(request.getParameter("reward"));
 		int entry_id=Integer.parseInt(request.getParameter("entry_id"));
+		String description=request.getParameter("description");
 		
 		IJSONable returnMessage=Controller.api.registerDeliveryIntent(user_id, capacity, date, lat_dest, 
-				lng_dest, address, store_id, reward, entry_id);
+				lng_dest, address, store_id, reward, description, entry_id);
 		writer.write(returnMessage.toJSON());
 		
 		return "out";
