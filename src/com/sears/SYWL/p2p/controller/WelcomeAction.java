@@ -52,6 +52,9 @@ public class WelcomeAction extends Action {
 		Controller.api.getUserDao().save(user);
 		
 		int user_id = user.getUserId();
+		
+		System.out.println("!!!!!!!!user_id:"+user_id);
+		
 		session.setAttribute("user_id", user_id);
 		
 		return ("addItem.jsp");

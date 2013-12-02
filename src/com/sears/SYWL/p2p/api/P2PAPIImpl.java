@@ -66,6 +66,7 @@ public class P2PAPIImpl implements P2PAPI {
 	public IJSONable checkDeliveryAvailability(int user_id,double lat_dest,
 			double lng_dest,String address, int store_id, int numOfGoods, double pickUpRange,
 			long orderDate, long dueTime) {
+		
 		List<DeliverIntent> intentList=deliverIntentDao.queryActiveIntentPool(store_id, dueTime);
 		int leftGoods=numOfGoods;
 		ArrayList<Integer> matchedList=new ArrayList<Integer>();

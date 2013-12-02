@@ -106,7 +106,7 @@ function sendMessage(n, e_id) {
 	    <div class="div-e">
 		<ul class="pageitem">
 			<li class="button">
-			<input name="sendMessage" type="submit" id="<%="my_submit_button"+counter %>" value="Send Notification" onclick="sendMessage(<%=counter%>, <%=summaryEntry.getEntryId() %>>)"/></li>
+			<input name="sendMessage" type="submit" id="<%="my_submit_button"+counter %>" value="Send Notification" onclick="sendMessage(<%=counter%>, <%=summaryEntry.getEntryId() %>)"/></li>
 		</ul>
 		</div>
 		
