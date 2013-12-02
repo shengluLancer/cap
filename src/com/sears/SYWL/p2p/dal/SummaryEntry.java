@@ -58,8 +58,26 @@ public class SummaryEntry {
 	private double subtotalPrice;
 	@Column(name="DELIVER_FEE")
 	private double deliverFee;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinTable(name="TB_ENTRY_INTENT", 
+			   joinColumns = @JoinColumn(name="ENTRY_ID"),
+			   inverseJoinColumns = @JoinColumn(name="DELIVER_ID"))
+	private DeliverIntent deliverIntent;
 
 	
+	public DeliverIntent getDeliverIntent() {
+		return deliverIntent;
+	}
+	public void setDeliverIntent(DeliverIntent deliverIntent) {
+		this.deliverIntent = deliverIntent;
+	}
+	public static String getPickUp() {
+		return PICK_UP;
+	}
+	public static String getGetDelivery() {
+		return GET_DELIVERY;
+	}
 	public int getEntryId() {
 		return entryId;
 	}
