@@ -157,7 +157,7 @@ System.out.println("check intent id: " +  intent.getDeliverId());
 
 	@Override
 	public IJSONable registerDeliveryIntent(int user_id, int capacity,
-			long date, double lat_dest, double lng_dest, String address, int store_id, int reward,int summaryentry_id) {
+			long date, double lat_dest, double lng_dest, String address, int store_id, int reward,String description, int summaryentry_id) {
 		DeliverIntent dIntent=new DeliverIntent();
 		dIntent.setStore_id(store_id);
 		User user =userDao.loadUserById(user_id);
@@ -170,11 +170,13 @@ System.out.println("check intent id: " +  intent.getDeliverId());
 		dIntent.setReward(reward);
 		dIntent.setActive(0);
 		
+		
 		userDao.updateDeliveryLocationHistory(user_id, lat_dest, lng_dest, address);
 		
 		deliverIntentDao.save(dIntent);
 		SummaryEntry summaryEntry=summaryEntryDao.loadSummaryEntryById(summaryentry_id);
 		summaryEntry.setDeliverIntent(dIntent);
+		summaryEntry.setDetailedDescription(description);
 		summaryEntryDao.save(summaryEntry);
 		return new SimpleMessage("true");
 	}
