@@ -36,13 +36,13 @@ import com.twilio.sdk.TwilioRestException;
 
 public class P2PAPIImpl implements P2PAPI {
 	
-	public DeliverIntentDao deliverIntentDao;
-	public UserDao userDao;
-	public OrderDao orderDao;
-	public SummaryDao summaryDao;
-	public SummaryEntryDao summaryEntryDao;
-	public LocationDao locationDao;
-	public StoreDao storeDao;
+	public volatile DeliverIntentDao deliverIntentDao;
+	public volatile UserDao userDao;
+	public volatile OrderDao orderDao;
+	public volatile SummaryDao summaryDao;
+	public volatile SummaryEntryDao summaryEntryDao;
+	public volatile LocationDao locationDao;
+	public volatile StoreDao storeDao;
 	
 	private static Comparator<Location> locationComparator= new Comparator<Location>() {
 
