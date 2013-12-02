@@ -265,9 +265,9 @@ public class P2PAPIImpl implements P2PAPI {
 	}
 
 	@Override
-	public IJSONable sendMessage(int summaryentry_id, int intent_id) throws TwilioRestException {
+	public IJSONable sendMessage(int summaryentry_id) throws TwilioRestException {
 		SummaryEntry summaryEntry=summaryEntryDao.loadSummaryEntryById(summaryentry_id);
-		DeliverIntent intent=deliverIntentDao.loadIntentById(intent_id);
+		DeliverIntent intent=summaryEntry.getDeliverIntent();
  		Set<User> set=intent.getPickupUsers();
 		for (User user : set) {
 			StringBuilder sb=new StringBuilder();

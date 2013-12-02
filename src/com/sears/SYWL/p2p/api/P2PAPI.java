@@ -90,7 +90,7 @@ public interface P2PAPI {
 	public IJSONable getLocationHistoryByUserId_Deliverer( int user_id );
 	
 	//send an SMS message to all people on the intent list
-	public IJSONable sendMessage(int summaryentry_id, int intent_id)  throws TwilioRestException;
+	public IJSONable sendMessage(int summaryentry_id)  throws TwilioRestException;
 	
 	
 
