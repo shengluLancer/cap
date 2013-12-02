@@ -24,7 +24,8 @@ public class SummaryAction extends Action {
 	public String perform(HttpServletRequest request, PrintWriter writer) {
 		Summary summary=(Summary)request.getSession().getAttribute("my_summary");
 		IJSONable returnMessage=Controller.api.confirmSummary(summary);
-		return "out";
+		
+		return "sendMessage.jsp";
 	}
 
 }
