@@ -6,7 +6,7 @@ import com.sears.SYWL.p2p.dal.*;
 
 public class LocationDaoImpl extends GenericDaoImpl<Location> implements LocationDao {
 
-	public Location loadLocationById(int location_id) {
+	public synchronized Location loadLocationById(int location_id) {
 		 Location t = new Location();
 		 Session hibernateSession = this.getSession();
 	     HibernateUtil.beginTransaction(); 

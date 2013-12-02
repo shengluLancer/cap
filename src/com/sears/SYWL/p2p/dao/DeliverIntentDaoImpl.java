@@ -11,7 +11,7 @@ import com.sears.SYWL.p2p.dal.*;
 public class DeliverIntentDaoImpl extends GenericDaoImpl<DeliverIntent> implements DeliverIntentDao{
 
 	
-		public DeliverIntent loadIntentById(int intentId){
+		public synchronized DeliverIntent loadIntentById(int intentId){
 			 DeliverIntent t = new DeliverIntent();
 			 Session hibernateSession = this.getSession();
 			 HibernateUtil.beginTransaction(); 
@@ -21,7 +21,7 @@ public class DeliverIntentDaoImpl extends GenericDaoImpl<DeliverIntent> implemen
 		}
 
 		
-		public List<DeliverIntent> queryActiveIntentPool(int store_id,  long dueTime){
+		public synchronized List<DeliverIntent> queryActiveIntentPool(int store_id,  long dueTime){
 			List<DeliverIntent> result = new ArrayList<DeliverIntent>();
 			String sql_1 = "select TB_DELIVER_INTENT.DELIVER_ID from TB_DELIVER_INTENT where STORE_ID = " + store_id;
 			String sql_2 = " AND DUE_TIME < " + dueTime;
@@ -44,7 +44,7 @@ public class DeliverIntentDaoImpl extends GenericDaoImpl<DeliverIntent> implemen
 		}
 
 		@Override
-		public boolean deleteIntentById(int intentID) {
+		public synchronized boolean deleteIntentById(int intentID) {
 			boolean result = true;
 			try{
 				DeliverIntent intent = loadIntentById(intentID);

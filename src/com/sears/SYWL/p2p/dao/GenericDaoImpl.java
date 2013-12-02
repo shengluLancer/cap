@@ -9,7 +9,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
         return HibernateUtil.getSession();
     }
 	@Override
-    public void delete(T entity) {
+    public synchronized void delete(T entity) {
         Session hibernateSession = this.getSession();
         HibernateUtil.beginTransaction();
         hibernateSession.delete(entity);
@@ -19,7 +19,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
 
 	@Override
-	public void save(T entity) {
+	public synchronized void save(T entity) {
         Session hibernateSession = this.getSession();
         HibernateUtil.beginTransaction();
         hibernateSession.saveOrUpdate(entity);
@@ -28,7 +28,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     }
 	
 	@Override
-	public void merge(T entity) {
+	public synchronized void merge(T entity) {
         Session hibernateSession = this.getSession();
         HibernateUtil.beginTransaction();
         hibernateSession.merge(entity);

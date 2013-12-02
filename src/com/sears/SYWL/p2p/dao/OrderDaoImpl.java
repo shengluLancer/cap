@@ -7,7 +7,7 @@ import com.sears.SYWL.p2p.dal.Order;
 
 public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao{
 	
-	public Order loadOrderById(int orderId){
+	public synchronized Order loadOrderById(int orderId){
 		 Order t = new Order();
 		 Session hibernateSession = this.getSession();
 	     HibernateUtil.beginTransaction(); 

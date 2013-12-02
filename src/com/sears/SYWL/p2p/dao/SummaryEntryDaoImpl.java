@@ -11,7 +11,7 @@ import com.sears.SYWL.p2p.dal.*;
 
 public class SummaryEntryDaoImpl extends GenericDaoImpl<SummaryEntry> implements SummaryEntryDao {
 
-	public SummaryEntry loadSummaryEntryById(int summaryEntry_id) {
+	public synchronized SummaryEntry loadSummaryEntryById(int summaryEntry_id) {
 		 SummaryEntry t = new SummaryEntry();
 		 Session hibernateSession = this.getSession();
 	     HibernateUtil.beginTransaction(); 
@@ -20,7 +20,7 @@ public class SummaryEntryDaoImpl extends GenericDaoImpl<SummaryEntry> implements
 	     return t;
 	}
 	
-	public int getNumOfGoods(int summaryEntry_id){
+	public synchronized int getNumOfGoods(int summaryEntry_id){
 		String sql_1 = "select SUM(COUNT) from TB_ENTRY_ORDER JOIN TB_ORDER USING (ORDER_ID) where ENTRY_ID = " + summaryEntry_id;
 		String sql = sql_1;
 		Session hibernateSession = this.getSession();

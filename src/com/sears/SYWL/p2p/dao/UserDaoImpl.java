@@ -11,7 +11,7 @@ import com.sears.SYWL.p2p.dal.User;
 
 public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 	
-	public User loadUserById(int userId){
+	public synchronized User loadUserById(int userId){
 		 User t = new User();
 		 Session hibernateSession = this.getSession();
 		 System.out.println(hibernateSession);
@@ -21,7 +21,7 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 	     return t;
 	}
 	
-	public List<Location> getDeliveryHistoryLocation(int userId){
+	public synchronized List<Location> getDeliveryHistoryLocation(int userId){
 		List<Location> result = new ArrayList<Location>();
 		String sql = "select TB_LOCATION.LOCATION_ID from TB_LOCATION join TB_USER_DELIVER_LOCATION USING (LOCATION_ID) where TB_USER_DELIVER_LOCATION.USER_ID = " + userId + " ORDER BY TIMESTAMP DESC";
 		Session hibernateSession = this.getSession();
@@ -41,7 +41,7 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 		
 	}
 	
-	public List<Location> getBuyerHistoryLocation(int userId){
+	public synchronized List<Location> getBuyerHistoryLocation(int userId){
 		List<Location> result = new ArrayList<Location>();
 		String sql = "select TB_LOCATION.LOCATION_ID from TB_LOCATION join TB_USER_BUYER_LOCATION USING (LOCATION_ID) where TB_USER_BUYER_LOCATION.USER_ID = " + userId + " ORDER BY TIMESTAMP DESC";
 		Session hibernateSession = this.getSession();
@@ -60,7 +60,7 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 		
 	}
 	
-	public void updateDeliveryLocationHistory(int userId, double lat, double lng, String address){
+	public synchronized  void updateDeliveryLocationHistory(int userId, double lat, double lng, String address){
 		List<Location> resultLocation = getDeliveryHistoryLocation(userId);
 		User user = loadUserById(userId);
 		Location availableLocation = findAvailableLocation(lat, lng, resultLocation);
@@ -81,7 +81,7 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 	}
 	
 	
-	public void updateBuyerLocationHistory(int userId, double lat, double lng, String address){
+	public synchronized void updateBuyerLocationHistory(int userId, double lat, double lng, String address){
 		List<Location> resultLocation = getBuyerHistoryLocation(userId);
 		User user = loadUserById(userId);
 		Location availableLocation = findAvailableLocation(lat, lng, resultLocation);
@@ -101,7 +101,7 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 		}
 	}
 	
-	private Location findAvailableLocation(double lat, double lng, List<Location> resultLocation){
+	private synchronized Location findAvailableLocation(double lat, double lng, List<Location> resultLocation){
 		for(Location location : resultLocation){
 			if(location.getLatitude() == lat && location.getLongitude() == lng){
 				return location;
