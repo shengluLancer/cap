@@ -33,7 +33,7 @@
 </div>
 <div id="content">
     	<fieldset>
-    	<span class="graytitle">Your order has been submitted! You will receive SMS in 10 minutes.</span>
+    	<span class="graytitle">Your order has been submitted! You will receive an notification when your order is delivered.</span>
 		</fieldset>
 </div>
 <div id="footer">

@@ -55,6 +55,7 @@ public class Controller extends HttpServlet {
 		Action.add(new ChooseAfSuccessDeliverAction());
 		Action.add(new ChooseAfFailDeliverAction());
 		Action.add(new WelcomeAction());
+		Action.add(new SendMessageAction());
 	}
 	
 	

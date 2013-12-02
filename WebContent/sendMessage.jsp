@@ -42,6 +42,21 @@ function viewDetails(id) {
 function turnToGray(n) {
 	document.getElementById('my_submit_button'+n).disabled = 'disabled';
 	document.getElementById('my_submit_button'+n).setAttribute("value", "Notification Sent!");
+	
+	//ajax send message
+	var target_url= "sendMessage.do";
+	 $.ajax({
+	    	url : target_url,
+	    	data : {
+	    		entry_id : <%=request.getAttribute("user_id")%>,
+	    		intent_id: 
+	    	},
+	    	success : function(result) {
+	    		
+	    	} 
+	    });
+	
+	
 }
 
 </script>
