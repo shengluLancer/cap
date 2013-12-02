@@ -81,7 +81,14 @@ public class P2PAPIImpl implements P2PAPI {
 			leftGoods=holdIntent(intent,leftGoods,user_id);
 			deliverIntentDao.save(intent);
 			matchedList.add(intent.getDeliverId());
+
+			
+System.out.println("check intent id: " +  intent.getDeliverId());
+
+
 			if(leftGoods==0) return new CheckIntentMessage(true, matchedList);
+			
+			
 		}
 		
 		return new CheckIntentMessage(false,null);

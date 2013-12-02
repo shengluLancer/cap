@@ -5,7 +5,7 @@
 
 <%
    /* String userId = request.getParameter( "userId" ); */
-   session.setAttribute( "userId", 1);
+  
 %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">

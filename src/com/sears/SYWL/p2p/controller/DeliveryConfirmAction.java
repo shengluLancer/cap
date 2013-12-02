@@ -28,7 +28,7 @@ public class DeliveryConfirmAction extends Action {
 		
 		
 		HttpSession session = request.getSession();
-		int userId = new Integer((session).getAttribute("userId").toString());
+		int userId = new Integer((session).getAttribute("user_id").toString());
 		double longitude = Double.parseDouble(request.getParameter("finalLongitude"));
 		double latitude = Double.parseDouble(request.getParameter("finalLatitude"));
 //		double latitude = new Double(request.getParameter("finalLatitude"));
