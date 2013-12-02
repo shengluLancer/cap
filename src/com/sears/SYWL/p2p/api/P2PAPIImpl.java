@@ -284,7 +284,7 @@ System.out.println("check intent id: " +  intent.getDeliverId());
 			sb.append("Hi ").append(user.getfName()).append(", ");
 			String add=summaryEntry.getDeliverLocation().getAddress();
 			add=add.substring(0,add.indexOf(','));
-			sb.append("Come to ").append(summaryEntry.getDeliverLocation().getAddress());
+			sb.append("Come to ").append(add);
 			sb.append(" to pick up. Info: ").append(summaryEntry.getDetailedDescription());
 			
 
