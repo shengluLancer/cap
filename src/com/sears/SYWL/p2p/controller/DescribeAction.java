@@ -39,7 +39,7 @@ public class DescribeAction extends Action {
 		SummaryEntry entry = Controller.api.getSummaryEntryDao().loadSummaryEntryById(entry_id);
 		
 		Controller.api.registerDeliveryIntent(user_id, capacity, System.currentTimeMillis(),
-				lat_dest, lng_dest, address,entry.getStoreId() , 10);
+				lat_dest, lng_dest, address,entry.getStoreId() , 10, entry.getEntryId());
 		
 		Location location = new Location();
 		location.setAddress(address);
