@@ -51,7 +51,7 @@ public class AddItemAction extends Action {
 //		int user_id = 1;
 //		session.setAttribute("user_id", user_id);
 		int user_id = (Integer)session.getAttribute("user_id");
-		User user = Controller.api.getUserDao().loadUserById((int)session.getAttribute("user_id"));
+		User user = Controller.api.getUserDao().loadUserById((Integer)session.getAttribute("user_id"));
 		
 		SummaryEntry newEntry = (SummaryEntry)JsonWrapper.unwrap(entryData, SummaryEntry.class);
 
