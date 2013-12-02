@@ -1,5 +1,6 @@
 package com.sears.SYWL.p2p.dal;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -59,6 +60,9 @@ public class User {
 	Set<Location> buyerLocationHistory;
 	
 	public Set<Location> getDeliverLocationHistory() {
+		if(deliverLocationHistory == null){
+			deliverLocationHistory = new HashSet<Location>();
+		}
 		return deliverLocationHistory;
 	}
 
@@ -67,6 +71,9 @@ public class User {
 	}
 
 	public Set<Location> getBuyerLocationHistory() {
+		if(buyerLocationHistory == null){
+			buyerLocationHistory = new HashSet<Location>();
+		}
 		return buyerLocationHistory;
 	}
 

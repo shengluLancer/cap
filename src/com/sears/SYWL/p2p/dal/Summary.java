@@ -1,5 +1,6 @@
 package com.sears.SYWL.p2p.dal;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -52,6 +53,9 @@ public class Summary {
 		this.user = user;
 	}
 	public Set<SummaryEntry> getEntryList() {
+		if(entryList == null){
+			entryList = new HashSet<SummaryEntry>();
+		}
 		return entryList;
 	}
 	public void setEntryList(Set<SummaryEntry> entryList) {

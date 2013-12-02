@@ -51,7 +51,7 @@ public class DeliverIntent {
 	private Set<User> pickupUsers;
 	
 	public Set<User> getPickupUsers() {
-		if(pickupUsers.size() == 0){
+		if(pickupUsers == null){
 			pickupUsers = new HashSet<User>();
 		}
 		return pickupUsers;

@@ -1,5 +1,6 @@
 package com.sears.SYWL.p2p.dal;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -98,6 +99,9 @@ public class SummaryEntry {
 		this.deliverMethod = deliverMethod;
 	}
 	public Set<Order> getOrders() {
+		if(orders == null){
+			orders = new HashSet<Order>();
+		}
 		return orders;
 	}
 	public void setOrders(Set<Order> orders) {
