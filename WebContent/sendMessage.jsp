@@ -39,7 +39,7 @@ function viewDetails(id) {
 	location.href="viewDetails.jsp?entry_id="+id;
 }
 
-function turnToGray(n) {
+function sendMessage(n, e_id) {
 	document.getElementById('my_submit_button'+n).disabled = 'disabled';
 	document.getElementById('my_submit_button'+n).setAttribute("value", "Notification Sent!");
 	
@@ -48,11 +48,10 @@ function turnToGray(n) {
 	 $.ajax({
 	    	url : target_url,
 	    	data : {
-	    		entry_id : <%=request.getAttribute("user_id")%>,
-	    		intent_id: 
+	    		entry_id : e_id
 	    	},
 	    	success : function(result) {
-	    		
+	    		console.log("SMS sent!");
 	    	} 
 	    });
 	
@@ -105,7 +104,7 @@ function turnToGray(n) {
 	    <div class="div-e">
 		<ul class="pageitem">
 			<li class="button">
-			<input name="sendMessage" type="submit" id="<%="my_submit_button"+counter %>" value="Send Notification" onclick="turnToGray(<%=counter%>)"/></li>
+			<input name="sendMessage" type="submit" id="<%="my_submit_button"+counter %>" value="Send Notification" onclick="sendMessage(<%=counter%>, <%=summaryEntry.getEntryId() %>>)"/></li>
 		</ul>
 		</div>
 		
