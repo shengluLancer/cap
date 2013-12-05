@@ -36,6 +36,13 @@ public class ChooseAfFailDeliverAction extends Action {
 		}
 		else {
 			message = "You decided not to buy this item!";
+			e.setDeliverMethod(SummaryEntry.GET_DELIVERY);	
+
+			// deactive this summary entry 
+			e.setActive(-1);
+			//save the change of method into the database
+			Controller.api.getSummaryEntryDao().save(e);
+
 		}
 		request.setAttribute("message",message);
 		

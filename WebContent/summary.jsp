@@ -59,6 +59,10 @@ function viewDetails(id) {
     	int counter=0;
     	while(entryIterator.hasNext()) {
     	SummaryEntry summaryEntry = entryIterator.next();
+    	if(summaryEntry.getActive()!=0) {
+    		//if this entry not active, don't display it
+    		continue;
+    	}
     	String method = summaryEntry.getDeliverMethod();
     	//if pick up, then the summary Entry here don't have Location in it!
     	String message = null;
