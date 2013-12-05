@@ -7,8 +7,8 @@ import org.hibernate.SessionFactory;
 
 public class HibernateUtil {
  
-	private static final SessionFactory sessionFactory;
-	private static final Session hibernateSession;
+	private static volatile SessionFactory sessionFactory;
+	private static volatile Session hibernateSession;
 	
 	static {
 		try {

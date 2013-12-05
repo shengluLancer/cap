@@ -65,7 +65,16 @@ public class SummaryEntry {
 			   joinColumns = @JoinColumn(name="ENTRY_ID"),
 			   inverseJoinColumns = @JoinColumn(name="DELIVER_ID"))
 	private DeliverIntent deliverIntent;
-
+	@Column(name="ACTIVE")
+	private int active;
+	
+	public int getActive() {
+		return active;
+	}
+	
+	public void setActive(int active) {
+		this.active = active;
+	}
 	
 	public DeliverIntent getDeliverIntent() {
 		return deliverIntent;
