@@ -3,6 +3,7 @@
 <%@page import="javax.servlet.http.*"%>
 <%@page import="java.util.*"%>
 <%@page import="com.sears.SYWL.p2p.dal.*"%>
+<%@ page import="com.sears.SYWL.p2p.controller.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -74,19 +75,19 @@ function viewDetails(id) {
     %>
     	<div class="div-d">
     	<ul class="pageitem">
-		<li class="textbox"><span class="header"> <font size="5"><%="I am store #" + summaryEntry.getStoreId() %></font></span>
+		<li class="textbox"><span class="header"> <font size="4"><%=Controller.api.getStoreDao().loadStoreById(summaryEntry.getStoreId()).getStoreName()%></font></span>
     		<p><%=message%></p><br>
     	</li>
     	<% while(orderIterator.hasNext()){ 
     		   Order order = orderIterator.next();
     		   double price = order.getPreTaxPrice() + order.getTax();
     	%>
-    	<li> <div class="div-a" style="margin-left:10%;font-size:15pt"><%=order.getOrderName()%></div> 
-    		 <div class="div-b" style="font-size:15pt"><%=order.getCount()%></div>  
-    		 <div class="div-b" style="font-size:15pt"><%="$"+ price + " (tax: " + order.getTax() + ")" %></div> 
+    	<li> <div class="div-a" style="margin-left:10%;font-size:13pt"><%=order.getOrderName()%></div> 
+    		 <div class="div-b" style="font-size:13pt"><%=order.getCount()%></div>  
+    		 <div class="div-b" style="font-size:13pt"><%="$"+ price + " (tax: " + order.getTax() + ")" %></div> 
     	</li>
-		<li> <div class="div-a" style="margin-left:10%;font-size:15pt">Subtotal</div>
-			 <div class="div-c" style="margin-right:2%;font-size:15pt"><%=order.getTotalPrice()%></div> 
+		<li> <div class="div-a" style="margin-left:10%;font-size:13pt">Subtotal</div>
+			 <div class="div-c" style="margin-right:2%;font-size:13pt"><%=order.getTotalPrice()%></div> 
 		</li> 
     	<% }%>
     	 </ul>
@@ -94,7 +95,7 @@ function viewDetails(id) {
 	    
 	    <div class="div-e">
 	    <%if (method.equals("pickup")){ flag = true;%>
-	    <span class="graytitle">Deliver for others?</span>
+	    <span class="graytitle" style="font-size:11pt">Deliver for others?</span>
 	    <ul class="pageitem">
 			<li class="radiobutton"><span class="name">Yes</span>
 			<input name="delivertype<%=counter%>" type="radio" value="forOthers" onChange="change(<%=summaryEntry.getEntryId() %>)" <%= summaryEntry.getDeliverLocation()!=null? "checked":""  %> /></li>
@@ -105,7 +106,7 @@ function viewDetails(id) {
 		<%System.out.println(method+"  caonimabi"); if (method.equals("delivered")){%>
 		<ul class="pageitem">
 			<li class="button">
-			<input type="button" onclick="viewDetails(<%=summaryEntry.getEntryId() %>)" value="View Details" /></li>
+			<input type="button" onclick="viewDetails(<%=summaryEntry.getEntryId() %>)" value="View Details" style="font-size:11pt"/></li>
 		</ul>
 		<%}%>
 		</div>

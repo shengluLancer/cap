@@ -3,6 +3,7 @@
 <%@page import="javax.servlet.http.*"%>
 <%@page import="java.util.*"%>
 <%@page import="com.sears.SYWL.p2p.dal.*"%>
+<%@ page import="com.sears.SYWL.p2p.controller.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -86,18 +87,18 @@ function sendMessage(n, e_id) {
     %>
     	<div class="div-d">
     	<ul class="pageitem">
-		<li class="textbox"><span class="header"> <font size="5"><%="Store #" + summaryEntry.getStoreId() %></font></span><br>
+		<li class="textbox"><span class="header"> <font size="4"><%=Controller.api.getStoreDao().loadStoreById(summaryEntry.getStoreId()).getStoreName()%></font></span><br>
     	</li>
     	<% while(orderIterator.hasNext()){ 
     		   Order order = orderIterator.next();
     		   double price = order.getPreTaxPrice() + order.getTax();
     	%>
-    	<li> <div class="div-a" style="margin-left:10%;font-size:15pt"><%=order.getOrderName()%></div> 
-    		 <div class="div-b" style="font-size:15pt"><%=order.getCount()%></div>  
-    		 <div class="div-b" style="font-size:15pt"><%="$"+ price + " (tax: " + order.getTax() + ")" %></div> 
+    	<li> <div class="div-a" style="margin-left:10%;font-size:13pt"><%=order.getOrderName()%></div> 
+    		 <div class="div-b" style="font-size:13pt"><%=order.getCount()%></div>  
+    		 <div class="div-b" style="font-size:13pt"><%="$"+ price + " (tax: " + order.getTax() + ")" %></div> 
     	</li>
-		<li> <div class="div-a" style="margin-left:10%;font-size:15pt">Subtotal</div>
-			 <div class="div-c" style="margin-right:2%;font-size:15pt"><%=order.getTotalPrice()%></div> 
+		<li> <div class="div-a" style="margin-left:10%;font-size:13pt">Subtotal</div>
+			 <div class="div-c" style="margin-right:2%;font-size:13pt"><%=order.getTotalPrice()%></div> 
 		</li> 
     	<% }%>
     	 </ul>
@@ -106,7 +107,7 @@ function sendMessage(n, e_id) {
 	    <div class="div-e">
 		<ul class="pageitem">
 			<li class="button">
-			<input name="sendMessage" type="submit" id="<%="my_submit_button"+counter %>" value="Send Notification" onclick="sendMessage(<%=counter%>, <%=summaryEntry.getEntryId() %>)"/></li>
+			<input name="sendMessage" type="submit" id="<%="my_submit_button"+counter %>" value="Send Notification" onclick="sendMessage(<%=counter%>, <%=summaryEntry.getEntryId() %>)" style="font-size:10pt"/></li>
 		</ul>
 		</div>
 		
