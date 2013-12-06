@@ -41,7 +41,7 @@ public class AddItemAction extends Action {
 		}
 		else {
 			// 3
-			 entryData = "{'storeId':3,'orders':[{'orderName':'Bubble Tea','count':3,'preTaxPrice':12.4,'tax':2.0,'totalPrice':14.4}]}";
+			 entryData = "{'storeId':3,'orders':[{'orderName':'Bubble Tea','count':1,'preTaxPrice':12.4,'tax':2.0,'totalPrice':14.4}]}";
 		}
 			
 		//----------------------------------------

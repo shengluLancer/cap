@@ -65,7 +65,7 @@
 				    	
 				    	<span class="graytitle"><%= Controller.api.getStoreDao().loadStoreById(1).getStoreName() %></span>
 						<ul class="pageitem">
-							<li class="bigfield"><input type="text" id="item" name="item" readonly value="Chicken Over Rice * 1"/></li>
+							<li class="bigfield"><input type="text" id="item" name="item" readonly value="Beef Burger * 1"/></li>
 						</ul>
 						
 						<% } %>
@@ -76,7 +76,7 @@
 				    	
 				    	<span class="graytitle"><%=Controller.api.getStoreDao().loadStoreById(2).getStoreName()%></span>
 						<ul class="pageitem">
-							<li class="bigfield"><input type="text" id="item" name="item" readonly value="Bubble Tea * 2"/></li>
+							<li class="bigfield"><input type="text" id="item" name="item" readonly value="Mocha * 2"/></li>
 						</ul>
 						
 						<% } %>
@@ -87,7 +87,7 @@
 				    	
 				    	<span class="graytitle"><%=Controller.api.getStoreDao().loadStoreById(3).getStoreName()%></span>
 						<ul class="pageitem">
-							<li class="bigfield"><input type="text" id="item" name="item" readonly value="Italian Bagels * 4"/></li>
+							<li class="bigfield"><input type="text" id="item" name="item" readonly value="Bubble Tea * 1"/></li>
 						</ul>
 						
 						<% } %>
