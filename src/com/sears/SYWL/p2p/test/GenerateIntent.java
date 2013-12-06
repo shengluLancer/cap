@@ -9,7 +9,7 @@ public class GenerateIntent {
 		// TODO Auto-generated method stub
 		DeliverIntent intent0 = new DeliverIntent();
 		intent0.setLatitude(40.445818);
-		intent0.setLongitude(-79.948859);
+		intent0.setLongitude(-23.123);
 		intent0.setDate(System.currentTimeMillis());
 		intent0.setReward(100);
 		intent0.setStore_id(1);
@@ -21,7 +21,7 @@ public class GenerateIntent {
 		
 		DeliverIntent intent1 = new DeliverIntent();
 		intent1.setLatitude(40.444285);
-		intent1.setLongitude(-79.945554);
+		intent1.setLongitude(-19.945554);
 		intent1.setDate(System.currentTimeMillis());
 		intent1.setReward(80);
 		intent1.setStore_id(1);
@@ -32,8 +32,8 @@ public class GenerateIntent {
 		
 		
 		DeliverIntent intent2 = new DeliverIntent();
-		intent2.setLatitude(40.444320);
-		intent2.setLongitude(-79.940986);
+		intent2.setLatitude(80.444320);
+		intent2.setLongitude(-29.940986);
 		intent2.setDate(System.currentTimeMillis());
 		intent2.setReward(80);
 		intent2.setStore_id(2);
