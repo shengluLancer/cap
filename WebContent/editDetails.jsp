@@ -59,12 +59,12 @@
 		<form action="getDeliverLocInitAction.do" method="get">
     	<span class="graytitle">Address & Building</span>
 		<ul class="pageitem">
-			<li class="bigfield"><input type="text" name="address" readonly value="<%=request.getAttribute("address")==null? "5030 Centre Ave Pittsburgh" : request.getAttribute("address")%>" /></li>
+			<li class="bigfield"><input type="text" name="address" readonly value="<%=request.getAttribute("address")==null? "Carnegie Mellon University" : request.getAttribute("address")%>" /></li>
 		</ul>
 		<input type="hidden" id="mode" name="mode" value="1"></input>
 		<input type="hidden" id="entry_id" name="entry_id" value="<%= request.getParameter("entry_id") %>"></input>
-		<input type="hidden" id="latitude" name="latitude" value="<%=request.getAttribute("latitude")==null? "40.4443411" : request.getAttribute("latitude")%>"></input>
-		<input type="hidden" id="longitude" name="longitude" value="<%=request.getAttribute("longitude")==null? "-79.94392949999997" : request.getAttribute("longitude")%>"></input>
+		<input type="hidden" id="latitude" name="latitude" value="<%=request.getAttribute("latitude")==null? "40.4424925" : request.getAttribute("latitude")%>"></input>
+		<input type="hidden" id="longitude" name="longitude" value="<%=request.getAttribute("longitude")==null? "-79.94255279999999" : request.getAttribute("longitude")%>"></input>
 		<ul class="pageitem">   
 		    <li class="button"><input name="Edit" type="submit" value="Edit"/></li>
 		</ul>

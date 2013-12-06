@@ -108,7 +108,7 @@ $(document).ready(function() {
  //GBroswerIsCompatible()If Api support this browser  
         if (GBrowserIsCompatible()) {  
             map = new GMap2(document.getElementById("map"));  
-            var point = new GLatLng(40.4443411,-79.9439295);  
+            var point = new GLatLng(40.4424925,-79.94255279999999);  
             map.setCenter(point,16);   
             map.addControl(new GMapTypeControl());          
             var customUI = map.getDefaultUI();    
@@ -212,7 +212,7 @@ $(document).ready(function() {
         <form action="#" onsubmit="showAddr(this.currentAddress.value); return false"> 
     	<span class="graytitle">Current Location</span> 
         <ul class="pageitem">
-            <li class="button"><input name="currentAddress" id="currentAddress" type="submit" value="5030 Centre Ave, Pittsburgh"/></li>
+            <li class="button"><input name="currentAddress" id="currentAddress" type="submit" value="Carnegie Mellon University"/></li>
 		</ul>
         </form>
         
