@@ -7,7 +7,7 @@ public class GenerateStore {
 	public void generate() {
 		// TODO Auto-generated method stub
 		Store store0 = new Store();
-		store0.setStoreName("Little Asia");
+		store0.setStoreName("Union Grill");
 		TestDriver.storeList.add(store0);
 		
 		Store store1 = new Store();
