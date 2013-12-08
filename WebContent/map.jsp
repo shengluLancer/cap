@@ -34,7 +34,7 @@
     <script type="text/javascript">  
     
 $(document).ready(function() {
-	
+	$('#add_validation').hide();
 	var this_mode = document.getElementById("mode").value;
 	// mode 0 : get delivery
 	// mode 1 : pick up self
@@ -182,8 +182,10 @@ $(document).ready(function() {
           address,  
           function(point) {  
             if (!point) {  
+            	$('#add_validation').show(500);
               /* alert("Error: " + address);   */
             } else {  
+            	$('#add_validation').hide(500);
               map.setCenter(point, 16);  
             }  
     geocoder.getLocations(address, showAddress);  
@@ -226,7 +228,7 @@ $(document).ready(function() {
 			<div class="div-e"><li class="button"><input name="select" type="submit" value="Select"/></li></div>
 		</ul>
         </form>  
-        
+        <div id="add_validation" style="width: 90%; height: 30px; margin-left:5%; color:red;"> Address not found! Please enter a valid address! </div>
         <span class="graytitle">Chosen Location</span> 
         <ul class="pageitem">
             <div id="map" style="width: 100%; height: 300px; border: solid 1px #999; float: left">  </div>
