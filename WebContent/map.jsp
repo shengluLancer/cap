@@ -154,7 +154,7 @@ $(document).ready(function() {
     function showAddress(response) {  
       map.clearOverlays();  
       if (!response || response.Status.code != 200) {  
-        alert("HTTPStatusCode:" + response.Status.code);  
+        /* alert("HTTPStatusCode:" + response.Status.code);  */ 
       } else {  
         place = response.Placemark[0];  
         point = new GLatLng(place.Point.coordinates[1],  
@@ -182,7 +182,7 @@ $(document).ready(function() {
           address,  
           function(point) {  
             if (!point) {  
-              alert("Error: " + address);  
+              /* alert("Error: " + address);   */
             } else {  
               map.setCenter(point, 16);  
             }  
