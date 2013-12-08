@@ -117,10 +117,7 @@ System.out.println("check intent id: " +  intent.getDeliverId());
 	public IJSONable releaseIntent(int intent_id, int numOfGoods) {
 		// TODO Auto-generated method stub
 		DeliverIntent intent=deliverIntentDao.loadIntentById(intent_id);
-		if(intent.getCapacity()==0) { //TODO Add this method..
-			intent.setCapacity(numOfGoods);
-		}
-		
+		intent.setCapacity(intent.getCapacity()+numOfGoods);
 		deliverIntentDao.save(intent);
 		
 		return new SimpleMessage("true");
