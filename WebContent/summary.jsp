@@ -39,6 +39,11 @@ function change(id) {
 function viewDetails(id) {
 	location.href="viewDetails.jsp?entry_id="+id;
 }
+
+function cancel(id) {	
+	location.href="releaseintent.do?summary_id=" + id;
+}
+
 </script>
 
 <body>
@@ -122,6 +127,8 @@ function viewDetails(id) {
 		<ul class="pageitem">
 			<li class="button">
 			<input name="summarySubmit" type="submit" value="Submit"/></li>
+			<li class="button">
+			<input name="summaryCancel" type ="button" onclick="cancel(<%=ss.getSummaryId()%>)" value ="Cancel"></li>
 		</ul>
 		</div>
 		

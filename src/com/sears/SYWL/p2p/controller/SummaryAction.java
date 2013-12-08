@@ -23,6 +23,7 @@ public class SummaryAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request, PrintWriter writer) {
+		
 		Summary summary=(Summary)request.getSession().getAttribute("my_summary");
 		IJSONable returnMessage=Controller.api.confirmSummary(summary);
 		
