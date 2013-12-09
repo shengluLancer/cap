@@ -52,8 +52,8 @@ public class Controller extends HttpServlet {
 		Action.add(new DeliveryConfirmAction());
 		Action.add(new GetDeliverLocInitAction());
 		Action.add(new LocationAction());
-		Action.add(new ChooseAfSuccessDeliverAction());
-		Action.add(new ChooseAfFailDeliverAction());
+		Action.add(new ContinueShoppingAction());
+		Action.add(new ChoosePickupAction());
 		Action.add(new WelcomeAction());
 		Action.add(new SendMessageAction());
 	}

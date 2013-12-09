@@ -27,14 +27,21 @@ public class DescribeAction extends Action {
 		HttpSession session = request.getSession();
 		int user_id = (Integer)session.getAttribute("user_id");
 		
+		String description = (String)request.getParameter("description");
+		String amount = (String)request.getParameter("amount");
+		System.out.println("aaa");
+		if(description==null || amount==null || description==null || amount==null ||
+				description.isEmpty() || amount.isEmpty() || description.isEmpty() || amount.isEmpty()){
+			System.out.println("bbb");
+			request.setAttribute("error", 1);
+			return("editDetails.jsp");
+		}
+		
 		String address = (String)request.getParameter("finalAddress");
 		double lat_dest = Double.parseDouble((String)request.getParameter("finalLatitude"));
 		double lng_dest = Double.parseDouble((String)request.getParameter("finalLongitude"));
 		
-		
-		String description = (String)request.getParameter("description");
 		int capacity =  Integer.parseInt((String)request.getParameter("amount"));
-		
 		int entry_id = Integer.parseInt((String)request.getParameter("entry_id"));
 		SummaryEntry entry = Controller.api.getSummaryEntryDao().loadSummaryEntryById(entry_id);
 		

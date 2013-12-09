@@ -39,7 +39,7 @@
 </div>
 <div id="content">
     	<fieldset>
-    	<form action="chooseAfFailDeliverAction.do" method="get">
+    	<form action="choosePickupAction.do" method="get">
     	<span class="graytitle">Sorry, we cannot find a  P2P deliverer for you! Would you like to pick up instead?</span>
     	<ul class="pageitem">
 			<li class="button"><input name="yes" id="yes" type="submit" value="Yes"/></li>

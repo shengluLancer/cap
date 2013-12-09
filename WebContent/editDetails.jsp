@@ -49,7 +49,7 @@
 		 Pickup & Deliver</div>
 </div>
 <div id="content">
-    	<fieldset>
+    	<fieldset>	
     	<%
 		if(request.getAttribute("error")!=null){
 			out.print("<div><span class='redtitle'>Fields can not be empty!</span><br/><br/></div>");
@@ -71,6 +71,7 @@
 		</form>
 		
 		<form action="describe.do" onsubmit="updateAddr()" method="post">
+		
 		<input type="hidden" id="entry_id" name="entry_id" value="<%= request.getParameter("entry_id") %>"></input>
 		<input type="hidden" id="finalLatitude" name="finalLatitude" value="<%=request.getAttribute("latitude")==null? "40.4443411" : request.getAttribute("latitude")%>"></input>
 		<input type="hidden" id="finalLongitude" name="finalLongitude" value="<%=request.getAttribute("longitude")==null? "-79.94392949999997" : request.getAttribute("longitude")%>"></input>

@@ -39,7 +39,7 @@
 </div>
 <div id="content">
     	<fieldset>
-    	<form action="chooseAfSuccessDeliverAction.do" method="get">
+    	<form action="continueShoppingAction.do" method="get">
     	<span class="graytitle">Your item is successfully added!</span>
     	<ul class="pageitem">
 			<li class="button"><input name="checkout" id="checkout" type="submit" value="Check out"/></li>
