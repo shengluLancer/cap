@@ -44,12 +44,6 @@ public class AddItemAction extends Action {
 			 entryData = "{'storeId':3,'orders':[{'orderName':'Bubble Tea','count':1,'preTaxPrice':12.4,'tax':2.0,'totalPrice':14.4}]}";
 		}
 			
-		//----------------------------------------
-		//hard code user id
-		//need to be removed
-		//----------------------------------------
-//		int user_id = 1;
-//		session.setAttribute("user_id", user_id);
 		int user_id = (Integer)session.getAttribute("user_id");
 		
 		System.out.println("GEETETETETTuerid:"+user_id);

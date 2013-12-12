@@ -8,9 +8,11 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import com.sears.SYWL.p2p.apiobj.CheckIntentMessage;
+import com.sears.SYWL.p2p.apiobj.GeographyUtils;
 import com.sears.SYWL.p2p.apiobj.IJSONable;
 import com.sears.SYWL.p2p.apiobj.LocationHistoryMessage;
 import com.sears.SYWL.p2p.apiobj.OrderListMessage;
+import com.sears.SYWL.p2p.apiobj.SMGUtls;
 import com.sears.SYWL.p2p.apiobj.SimpleMessage;
 import com.sears.SYWL.p2p.dal.DeliverIntent;
 import com.sears.SYWL.p2p.dal.Location;
@@ -81,9 +83,6 @@ public class P2PAPIImpl implements P2PAPI {
 			leftGoods=holdIntent(intent,leftGoods,user_id);
 			deliverIntentDao.save(intent);
 			matchedList.add(intent.getDeliverId());
-
-			
-System.out.println("check intent id: " +  intent.getDeliverId());
 
 
 			if(leftGoods==0) return new CheckIntentMessage(true, matchedList);
@@ -286,7 +285,6 @@ System.out.println("check intent id: " +  intent.getDeliverId());
 			sb.append("Come to ").append(add);
 			sb.append(" to pick up. Info: ").append(summaryEntry.getDetailedDescription());
 			
-
 			System.out.println("message:   "+sb.toString());
 			System.out.println("message length:   "+sb.toString().length());
 			

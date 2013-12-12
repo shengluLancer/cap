@@ -1,4 +1,4 @@
-package com.sears.SYWL.p2p.api;
+package com.sears.SYWL.p2p.apiobj;
 
 public class GeographyUtils {
 	public static final double EARTH_RADIUS=6367.45;

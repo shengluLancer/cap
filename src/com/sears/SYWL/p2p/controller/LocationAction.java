@@ -32,11 +32,6 @@ public class LocationAction extends Action {
 		double confirmLongitude = new Double(request.getParameter("confirmLongitude"));
 		double confirmLatitude = new Double(request.getParameter("confirmLatitude"));
 		
-		
-//		System.out.println(confirmAddr);
-//		System.out.println(confirmLatitude);
-//		System.out.println(confirmLongitude);
-//		request.setAttribute("userId", userId);
         request.setAttribute("address", confirmAddr);
         request.setAttribute("latitude", confirmLatitude);
         request.setAttribute("longitude", confirmLongitude);

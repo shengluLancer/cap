@@ -31,12 +31,6 @@ public class WelcomeAction extends Action {
 		HttpSession session = request.getSession();
 		
 		
-//		//hard code user id
-//		int user_id = 1;
-//		session.setAttribute("user_id", user_id);
-		
-		
-		
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String phoneNumber = "+1" + request.getParameter("phoneNum1") + request.getParameter("phoneNum2") + request.getParameter("phoneNum3");
@@ -53,8 +47,6 @@ public class WelcomeAction extends Action {
 		Controller.api.getUserDao().save(user);
 		
 		int user_id = user.getUserId();
-		
-		System.out.println("!!!!!!!!user_id:"+user_id);
 		
 		session.setAttribute("user_id", user_id);
 		

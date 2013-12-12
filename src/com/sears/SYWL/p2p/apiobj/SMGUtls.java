@@ -1,4 +1,4 @@
-package com.sears.SYWL.p2p.api;
+package com.sears.SYWL.p2p.apiobj;
 
 import java.util.HashMap;
 import java.util.Map;

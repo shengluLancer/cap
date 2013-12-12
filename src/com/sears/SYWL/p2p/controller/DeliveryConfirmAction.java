@@ -31,17 +31,9 @@ public class DeliveryConfirmAction extends Action {
 		int userId = new Integer((session).getAttribute("user_id").toString());
 		double longitude = Double.parseDouble(request.getParameter("finalLongitude"));
 		double latitude = Double.parseDouble(request.getParameter("finalLatitude"));
-//		double latitude = new Double(request.getParameter("finalLatitude"));
-//		double longitude = new Double(request.getParameter("finalLongitude"));
 		String address = request.getParameter("finalAddress");
 		double range = new Double(request.getParameter("range"));
 		
-		System.out.println("Entering   DeliveryConfirmAction.java");
-		System.out.println(userId);
-		System.out.println(latitude);
-		System.out.println(longitude);
-		System.out.println(address);
-		System.out.println(range);
 		
 		//check availability
 		int my_entry_id = (Integer)session.getAttribute("my_entry_id");
@@ -63,7 +55,6 @@ public class DeliveryConfirmAction extends Action {
 		CheckIntentMessage intentMessage=gson.fromJson(json, CheckIntentMessage.class);
 		
 		session.setAttribute("holding_list", intentMessage.getIntentList());
-//		System.out.println(intentMessage.getIntentList());
 		
 		if(intentMessage.getAvailability()) {
 			return "getDeliverSuccess.jsp";
