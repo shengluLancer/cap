@@ -34,10 +34,6 @@ public class WelcomeAction extends Action {
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String phoneNumber = "+1" + request.getParameter("phoneNum1") + request.getParameter("phoneNum2") + request.getParameter("phoneNum3");
-		System.out.println(firstName);
-		System.out.println(lastName);
-		System.out.println(phoneNumber);
-		System.out.println(System.currentTimeMillis());
 		
 		//create a new user
 		User user = new User();
