@@ -33,7 +33,6 @@ public class DeliverIntentDaoImpl extends GenericDaoImpl<DeliverIntent> implemen
 			Query query = hibernateSession.createSQLQuery(sql);
 			@SuppressWarnings("unchecked")
 			List<Integer> idList = query.list();
-			System.out.println(idList);
 			for(Integer id : idList){
 				DeliverIntent intent = new DeliverIntent();
 				intent = (DeliverIntent)hibernateSession.load(intent.getClass(), id);

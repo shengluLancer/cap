@@ -28,7 +28,6 @@ public class SummaryEntryDaoImpl extends GenericDaoImpl<SummaryEntry> implements
 		Query query = hibernateSession.createSQLQuery(sql);
 		@SuppressWarnings("unchecked")
 		List<BigDecimal> idList = query.list();
-		System.out.println(idList.get(0) + " number");
 		HibernateUtil.commitTransaction();
 		return idList.get(0).intValueExact();
 	}
